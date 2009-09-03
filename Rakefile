@@ -33,3 +33,17 @@ task :default => 'spec'
 # ADD YOUR CUSTOM TASKS IN /lib/tasks
 # NAME YOUR RAKE FILES file_name.rake
 ##############################################################################
+task :fixtures => :merb_env do
+  include DataMapper::Sweatshop::Unique
+  DataMapper.auto_migrate!
+  
+  User.create(:login => "teamon", :email => "i@teamon.eu", :name => "Tymon Tobolski", :password => "mapex", :password_confirmation => "mapex")  
+  
+  # User.fix {{
+  #   :name => /\w+ \w+/.gen,
+  #   :email => unique {|i| "#{/\w+/.gen}@example.com" },
+  #   :password => (password = /\w+/.gen),
+  #   :password_confirmation => password
+  # }}
+
+end

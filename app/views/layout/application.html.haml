@@ -1,0 +1,17 @@
+!!! Strict
+%html{ html_attrs("en_us") }
+  %head
+    %title
+      S4
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
+    = css_include_tag :reset, :grid, :master, :bundle => "app"
+    / = js_include_tag :jquery, :application, :bundle => "app"
+  %body
+    .grid
+      .grid8
+      .grid4
+        - if session.authenticated?
+          = "Witaj #{session.user.login}"
+          = link_to "Wyloguj", url(:logout)
+      
+      = catch_content :for_layout

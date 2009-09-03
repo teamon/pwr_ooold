@@ -1,0 +1,8 @@
+.grid5.push1
+  %h2= "Logowanie"
+  = form :action => slice_url(:merb_auth_slice_password, :perform_login), :method => 'put', :id => 'login_form' do
+    = default_error_messages_for session.authentication  
+    = fieldset do
+      %p= text_field Merb::Authentication::Strategies::Basic::Base.login_param, :label => "Login"
+      %p= password_field Merb::Authentication::Strategies::Basic::Base.password_param, :label => "Hasło"
+    .actions= submit "Zaloguj"
