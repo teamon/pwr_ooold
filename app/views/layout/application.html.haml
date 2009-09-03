@@ -2,12 +2,15 @@
 %html{ html_attrs("en_us") }
   %head
     %title
-      S4
-    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
+      pwr
+    %meta(content="text/html; charset=utf-8" http-equiv="content-type")
     = css_include_tag :reset, :grid, :master, :bundle => "app"
     / = js_include_tag :jquery, :application, :bundle => "app"
   %body
     .grid
+      .grid12
+        - message.each_pair do |type, msg|
+          #message(class=type)= msg
       .grid8
       .grid4
         - if session.authenticated?

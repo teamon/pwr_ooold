@@ -1,20 +1,12 @@
 require File.join( File.dirname(__FILE__), '..', "spec_helper" )
 
 describe User do
-  
-  VALID_PROPERTIES = {
-    :login => 'teamon',
-    :email => 'i@teamon.eu',
-    :password => 'mapex',
-    :password_confirmation => 'mapex',
-    :year => 1
-  }
 
   before do
+    Faculty.auto_migrate!
     User.auto_migrate!
     
-    @teamon = User.create(VALID_PROPERTIES)
-
+    @teamon = User.create(ValidProperties.user)
   end
   
   it "should be valid" do
@@ -28,7 +20,7 @@ describe User do
   end
   
   it "should require unique login" do
-    ivyl = User.new(VALID_PROPERTIES.merge(:email => "ivyl@teamon.eu"))
+    ivyl = User.new(ValidProperties.user.merge(:email => "ivyl@teamon.eu"))
     ivyl.should_not be_valid
     ivyl.errors.on(:login).should_not be_empty
     
@@ -90,7 +82,7 @@ describe User do
   end
   
   it "should require unique email" do
-    ivyl = User.new(VALID_PROPERTIES.merge(:login => "ivyl"))
+    ivyl = User.new(ValidProperties.user.merge(:login => "ivyl"))
     ivyl.should_not be_valid
     ivyl.errors.on(:email).should_not be_empty
     
@@ -105,12 +97,9 @@ describe User do
   end
   
   it "should require faculty" do
-    pending
-    @teamon.should respond_to(:faculty)
-  end
-  
-  it "should have year property" do
-    @teamon.should respond_to(:year)
+    @teamon.faculty = nil
+    @teamon.should_not be_valid
+    @teamon.errors.on(:faculty).should_not be_empty
   end
   
   it "should have accept year from 1..5" do

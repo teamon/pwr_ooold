@@ -9,6 +9,7 @@ class User
   property :admin,  Boolean, :default => false
   property :year,   Integer, :set => 1..5
   
-  
-  
+  belongs_to :faculty  
+  validates_present :faculty
+
 end

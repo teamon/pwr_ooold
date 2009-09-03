@@ -38,4 +38,5 @@ dependency "merb_datamapper", merb_gems_version
 
 dependency "teamon-merb-colorful-logger", :require_as => "merb-colorful-logger"
 dependency "teamon-merb-flash", :require_as => "merb-flash"
-dependency "teamon-merb-ext", :require_as => "merb-ext"
+# dependency "teamon-merb-ext", :require_as => "merb-ext"
+dependency "merb-ext", "0.1.1"

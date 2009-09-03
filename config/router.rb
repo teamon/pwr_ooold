@@ -1,5 +1,6 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
+  resources :faculties
   # RESTful routes
   # resources :posts
   
@@ -13,5 +14,5 @@ Merb::Router.prepare do
   # default_routes
   
   # Change this for your home page to be available at /
-  # match('/').to(:controller => 'whatever', :action =>'index')
+  match('/').to(:controller => 'faculties', :action =>'index')
 end
