@@ -1,8 +1,23 @@
-.grid5.push1
+.grid6
   %h2= "Logowanie"
-  = form :action => slice_url(:merb_auth_slice_password, :perform_login), :method => 'put', :id => 'login_form' do
+  = form :action => url(:perform_login), :method => 'put', :id => 'login_form' do
     = default_error_messages_for session.authentication  
     = fieldset do
       %p= text_field Merb::Authentication::Strategies::Basic::Base.login_param, :label => "Login"
       %p= password_field Merb::Authentication::Strategies::Basic::Base.password_param, :label => "Hasło"
     .actions= submit "Zaloguj"
+    
+.grid6
+  %h2= "Rejestracja"
+  = form_for(@new_user, :action => resource(:users)) do
+    = default_error_messages_for @new_user
+    = fieldset do
+      %p= text_field :login, :label => "Login"
+      %p= text_field :email, :label => "Email"
+      %p= password_field :password, :label => "Hasło"
+      %p= password_field :password_confirmation, :label => "Potwierdź hasło"
+    = fieldset do
+      %p= text_field :name, :label => "Imię i nazwisko"
+      %p= select :faculty_id, :label => "Wydział", :collection => Faculty.all, :text_method => :full_name, :value_method => :id, :prompt => "", :selected => @new_user.faculty_id.to_s
+      %p= select :year, :label => "Rok studiów", :collection => User.properties[:year].options[:set].map {|e| e.to_s}, :prompt => ""
+    .actions= submit "Zarejestruj"

@@ -12,6 +12,7 @@
         - message.each_pair do |type, msg|
           #message(class=type)= msg
       .grid8
+        pwr
       .grid4
         - if session.authenticated?
           = "Witaj #{session.user.login}"

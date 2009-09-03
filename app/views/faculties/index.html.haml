@@ -1,0 +1,4 @@
+.grid6
+  %ul
+    - for faculty in @faculties
+      %li= link_to faculty.full_name, resource(faculty)

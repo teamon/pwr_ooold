@@ -11,6 +11,12 @@ class Exceptions < Merb::Controller
     render :format => :html
   end
   
+  # handle Unauthenticated exception
+  def unauthenticated
+    @new_user = User.new
+    render :format => :html
+  end
+  
   # handle Unauthorized exception (401)
   def unauthorized
     render :format => :html

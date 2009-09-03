@@ -52,15 +52,17 @@ class ValidProperties
         :password => 'mapex',
         :password_confirmation => 'mapex',
         :year => 1,
-        :faculty => Faculty.create(self.faculty)
+        :faculty => Faculty.get(4) || Faculty.create(self.faculty)
       }
     end
     
     def faculty
       {
-        :code => "W4",
+        :id => 4,
         :name => "Electronics"
       }
     end
   end
 end
+
+require "spec/fixtures"
