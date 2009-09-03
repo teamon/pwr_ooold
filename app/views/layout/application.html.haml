@@ -12,10 +12,14 @@
         - message.each_pair do |type, msg|
           #message(class=type)= msg
       .grid8
-        pwr
+        = link_to "pwr", url(:homepage)
       .grid4
         - if session.authenticated?
           = "Witaj #{session.user.login}"
           = link_to "Wyloguj", url(:logout)
+        - else
+          = link_to "Zaloguj", url(:login)
+          lub
+          = link_to "Zarejestruj się", url(:login)
       
       = catch_content :for_layout
