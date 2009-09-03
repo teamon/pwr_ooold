@@ -1,14 +1,17 @@
 class Faculties < Application
   # provides :xml, :yaml, :js
+  
+  before :ensure_authenticated, :exclude => [:index, :show]
 
   def index
     @faculties = Faculty.all(:order => [:id.asc])
+    @lectures = Lecture.recent
     display @faculties
   end
 
   def show(id)
-    @faculty = Faculty.get(id)
-    raise NotFound unless @faculty
+    @faculty = get(id)
+    @lectures = @faculty.lectures.in_order
     display @faculty
   end
 
@@ -20,8 +23,7 @@ class Faculties < Application
 
   def edit(id)
     only_provides :html
-    @faculty = Faculty.get(id)
-    raise NotFound unless @faculty
+    @faculty = get(id)
     display @faculty
   end
 
@@ -36,8 +38,7 @@ class Faculties < Application
   end
 
   def update(id, faculty)
-    @faculty = Faculty.get(id)
-    raise NotFound unless @faculty
+    @faculty = get(id)
     if @faculty.update_attributes(faculty)
        redirect resource(@faculty)
     else
@@ -46,13 +47,18 @@ class Faculties < Application
   end
 
   def destroy(id)
-    @faculty = Faculty.get(id)
-    raise NotFound unless @faculty
+    @faculty = get(id)
     if @faculty.destroy
       redirect resource(:faculties)
     else
       raise InternalServerError
     end
+  end
+  
+  protected
+  
+  def get(id)
+    Faculty.get(id) || (raise NotFound)
   end
 
 end # Faculties

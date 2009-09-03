@@ -1,4 +1,15 @@
-.grid6
+#faculties.grid6
+  %h2 Wybierz wydział
   %ul
     - for faculty in @faculties
-      %li= link_to faculty.full_name, resource(faculty)
+      %li= link_to faculty.full_name_with_lectures_count, resource(faculty)
+      
+      
+.lectures.grid6
+  %h2 Ostatnio dodane wykłady
+  %ul
+    - for lecture in @lectures
+      %li{:class => cycle("even", "odd")}
+        .date= format_datetime(lecture.date)
+        .name= link_to lecture.name, resource(lecture)
+        .faculty= link_to lecture.faculty.code, resource(lecture.faculty)

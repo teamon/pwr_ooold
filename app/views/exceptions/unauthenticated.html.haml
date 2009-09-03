@@ -1,5 +1,5 @@
 .grid6
-  %h2= "Logowanie"
+  %h2 Logowanie
   = form :action => url(:perform_login), :method => 'put', :id => 'login_form' do
     = default_error_messages_for session.authentication  
     = fieldset do
@@ -8,7 +8,7 @@
     .actions= submit "Zaloguj"
     
 .grid6
-  %h2= "Rejestracja"
+  %h2 Rejestracja
   = form_for(@new_user, :action => resource(:users)) do
     = default_error_messages_for @new_user
     = fieldset do

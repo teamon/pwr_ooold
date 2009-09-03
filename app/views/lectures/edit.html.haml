@@ -1,0 +1,24 @@
+.grid6
+  %h2 Edytuj wykład
+  = form_for(@lecture, :action => resource(@lecture)) do
+    = default_error_messages_for @lecture
+    = fieldset do
+      %p= text_field :name, :label => "Nazwa"
+      %p= text_area :description, :label => "Opis"
+      %p= text_field :date, :label => "Data i godzina"
+      %p
+        %span.info yyyy-mm-dd hh:mm
+    .actions= submit "Zapisz"
+    
+    = fieldset do
+      %h3 Dodaj zdjęcia
+      %p.upload
+        = file_field :name => "imageUpload", :rel => @lecture.id
+        %span.menu
+          %a#startUpload(href="#") Upload
+          |
+          %a#clearQueue(href="#") Wyczyść kolejke
+#images.grid6  
+  %h2 Zdjęcia
+  .images
+      

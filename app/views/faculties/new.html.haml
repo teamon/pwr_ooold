@@ -1,0 +1,13 @@
+%h1 Faculties controller, new action
+
+%p 
+  Edit this file in 
+  %tt app/views/faculties/new.html.erb
+
+= error_messages_for @faculty
+
+= form_for(@faculty, :action => url(:faculties) ) do
+  %p
+    = submit "Create"
+
+= link_to 'Back', url(:faculties)

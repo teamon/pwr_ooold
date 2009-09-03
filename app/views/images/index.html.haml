@@ -1,0 +1,6 @@
+%ul
+  - @images.each do |image|
+    %li{:id => image.id}
+      %div
+        %img{:src => image.url(:thumbnail)}
+        = link_to "Delete", resource(@lecture, image), :class => 'delete'

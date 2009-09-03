@@ -1,0 +1,78 @@
+class Lectures < Application
+  # provides :xml, :yaml, :js
+  
+  before :ensure_authenticated, :exclude => [:index, :show]
+  # before :ensure_lecture_author, :only => [:edit, :update]
+  
+  before do
+    if params[:faculty_id]
+      @faculty = Faculty.get(params[:faculty_id]) || (raise NotFound)
+    end
+  end
+  
+  def index
+    @lectures = Lecture.all
+    display @lectures
+  end
+
+  def show(id)
+    @lecture = get(id)
+    @images = @lecture.images.in_order
+    display @lecture
+  end
+
+  def new
+    raise NotFound unless @faculty
+    only_provides :html
+    @lecture = Lecture.new
+    display @lecture
+  end
+
+  def edit(id)
+    only_provides :html
+    @lecture = get(id)
+    display @lecture
+  end
+
+  def create(lecture)
+    raise NotFound unless @faculty
+    @lecture = Lecture.new(lecture)
+    @lecture.user = session.user
+    @lecture.faculty = @faculty
+    if @lecture.save
+      redirect resource(@lecture, :edit), :message => "Wykład został dodany"
+    else
+      render :new
+    end
+  end
+
+  def update(id, lecture)
+    @lecture = get(id)
+    if @lecture.update_attributes(lecture)
+      redirect resource(@lecture, :edit), :message => "Zmiany zostały zapisane"
+    else
+      display @lecture, :edit
+    end
+  end
+
+  def destroy(id)
+    @lecture = get(id)
+    if @lecture.destroy
+      redirect resource(:lectures)
+    else
+      raise InternalServerError
+    end
+  end
+  
+  def package(id)
+    @lecture = get(id)
+    send_file *@lecture.package
+  end
+  
+  protected
+  
+  def get(id)
+    Lecture.get(id) || (raise NotFound)
+  end
+
+end # Lectures

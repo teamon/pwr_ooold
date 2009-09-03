@@ -6,7 +6,12 @@ body {
 }
 
 .grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11, .grid12 {
-  background-color: #f0f0f0;
+/*  background-color: #f0f0f0;*/
+}
+
+.grid6 {
+  background-color: #f5f5f5;
+  padding: 10px 0;
 }
 
 a {
@@ -15,43 +20,68 @@ a {
 a:hover {
   text-decoration: underline;
 }
-/*
+
 strong {
   font-weight: bold;
 }
 
+#top {
+  height:30px;
+  padding: 10px 0 10px 0;
+}
+
+h1 a{
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 5px 0px 15px 15px;
+}
 
 h2 {
   font-size: 12pt;
   font-weight: bold;
-  padding: 5px 0px 10px 0px;  
+  padding: 5px 0px 15px 15px;  
 }
 
+h3 {
+  font-size: 11pt;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 15px 15px 5px 15px;
+  border-top: 1px dashed #ccc;
+}
+/*
   width:  270px;
   margin: auto;
 }
 
 fieldset {
 }
-
+*/
 fieldset p { 
   overflow: hidden;
 }
 fieldset label { 
   float: left;
-  width: 50px;
+  width: 100px;
   text-align: right;
   padding: 6px;
 }
+
+fieldset label:after { content: ":"; }
 
 fieldset input.text,
 fieldset input.password,
 fieldset textarea,
 fieldset select { 
   float: left;
-  width: 200px;
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 3px;
 }
-
+fieldset textarea {
+  height: 150px;
+}
+/*
 fieldset p.checkbox label { 
   text-align: left; 
   padding: 2px 5px;
@@ -60,20 +90,134 @@ fieldset input.checkbox,
 fieldset input.radio { 
    float: left;
 }
-
+*/
 form .actions  { 
-  text-align: right;
-  padding-top: 10px;
+  padding-left: 112px;
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+form span.info {
+  padding-left: 115px;
+  color: #999;
+  float: left;
 }
 
 
 form .actions input {
-    background-color: rgb(52, 141, 211);
-  border: 1px solid rgb(163, 200, 233);
-  color: #fff;
-  padding: 3px 6px;
+  background-color: #4e4e4e;
+  color: #f2f2f2;
+  border: none;
+  -webkit-border-radius: 4px;
+  padding: 5px 10px;
 }
 
+
+.fileUploadQueueItem {
+	font: 11px Verdana, Geneva, sans-serif;
+	background-color: #F5F5F5;
+	border: 3px solid #E5E5E5;
+	margin-top: 5px;
+	padding: 10px;
+	width: 400px;
+}
+.fileUploadQueueItem .cancel {
+	float: right;
+}
+.fileUploadProgress {
+	background-color: #FFFFFF;
+	border-top: 1px solid #808080;
+	border-left: 1px solid #808080;
+	border-right: 1px solid #C5C5C5;
+	border-bottom: 1px solid #C5C5C5;
+	margin-top: 10px;
+	width: 100%;
+}
+.fileUploadProgressBar {
+	background-color: #0099FF;
+}
+
+p.upload {
+  margin:auto;
+  padding: 15px;
+}
+p.upload span.menu {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+}
+
+p.upload a {
+  color: #fc0000;
+  padding: 2px;
+}
+
+#faculties ul li a {
+  display: block;
+  color: #000;
+  padding: 3px 15px;
+  font-size: 10pt;
+}
+#faculties ul li span {
+  color: #aaa;
+}
+
+#lectures li {
+  padding: 5px 0;
+  overflow: hidden;
+}
+
+#lectures li .date {
+  float: left;
+  width: 100px;
+  text-align: center;
+  color: #555;
+}
+
+#lectures li .name {
+  font-size: 11pt;
+  float: left;
+  width: 450px;
+}
+
+#lectures li .author {
+  float: right;
+  padding-right: 10px;
+  width: 60px;
+  text-align: right;
+}
+
+#lectures li.even {
+  background-color: #f5f5f5;
+}
+
+div.menu {
+  padding-top: 10px;
+}
+
+
+a.button {
+  background-color: #4e4e4e;
+  color: #f2f2f2;
+  border: none;
+  -webkit-border-radius: 4px;
+  padding: 5px 10px;
+}
+
+span.desc {
+  display: block;
+  padding-left: 15px;
+  color: #aaa;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+a.light {
+  color: #85AACF;
+}
+
+p.time select {width: auto;}
+/*
 #submit {
     background-color: rgb(52, 141, 211);
   border: 1px solid rgb(163, 200, 233);
@@ -84,25 +228,24 @@ form .actions input {
 form .actions input:hover {
    cursor: pointer;
 }
-
+*/
 form div.error { 
-  padding:  15px;
-  margin-top:  15px;
-  
-    text-align: center;
+  text-align: center;
   font-size: 9pt;
   border: 1px solid ;
-  margin: 20px 0;
+  margin: 0 10px 20px 10px;
   background: #FFFFBB;
   border: 1px solid #E0E046;
 }
 
 form div.error h3 { 
   font-size: 15px;
+  border: none;
+  padding: 0;
 }
 
 form div.error ul { 
-  padding: 10px 0px 5px 20px; 
+  padding: 10px 0px 5px 20px;
 }
 
 form div.error ul li { 
@@ -110,6 +253,110 @@ form div.error ul li {
   list-style-position: inside;
 }
 
+.lectures li:first-child {
+  border: none;
+}
+.lectures li {
+  padding: 5px 0;
+  margin: 0 5px;
+  overflow: hidden;
+  border-top: 1px dashed #ccc;
+}
+
+.lectures li .date {
+  float: left;
+  width: 100px;
+  text-align: center;
+  color: #555;
+}
+
+.lectures li .name {
+  font-size: 11pt;
+  float: left;
+  width: 300px;
+}
+
+#lectures li .faculty {
+  float: right;
+  padding-right: 10px;
+  width: 60px;
+  text-align: right;
+}
+
+.comments {
+  margin-top: 20px;
+}
+
+.images ul li { 
+  float: left;
+  width: 106px;
+  height: 106px;
+  margin: 2px;
+}
+
+.images ul li div { 
+  position: relative;
+}
+
+.images ul li div img {
+  display: block;
+  border: 3px solid #999;
+}
+
+.images {
+  padding: 0 10px;
+}
+
+.images ul li:hover .delete {
+  display: block;
+}
+
+.images .delete {
+  display: none;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  text-indent: -2000px;
+  overflow: hidden;
+  background: url(/images/cancel.png);
+}
+
+.lecture_info {
+  padding: 0 15px;
+  color: #999;
+}
+
+.description {
+  padding: 15px;
+  text-align: justify;
+}
+
+.lecture_menu {
+  padding: 10px 15px 10px 15px;
+}
+
+dl {
+  padding: 0 15px;
+  
+}
+
+dt {
+  float: left;
+  width: 100px;
+  text-align: right;
+  padding-right:5px;
+  padding-bottom: 5px;
+}
+
+dd {
+  float: left;
+  width: 300px;
+  padding-bottom: 5px;
+}
+
+/*
 form textarea { 
   width:  400px; 
   height: 200px;

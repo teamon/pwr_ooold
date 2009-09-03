@@ -11,5 +11,7 @@ class User
   
   belongs_to :faculty  
   validates_present :faculty
+  
+  has n, :lectures
 
 end

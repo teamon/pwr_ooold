@@ -1,0 +1,16 @@
+%h1
+  Lectures controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/lectures/index.html.erb
+%table
+  %tr
+  - for lecture in @lectures
+    %tr
+      %td
+        = link_to 'Show', url(:lecture, lecture)
+      %td
+        = link_to 'Edit', url(:edit_lecture,  lecture)
+
+= link_to 'New', url(:new_lecture)

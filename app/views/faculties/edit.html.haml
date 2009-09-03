@@ -1,0 +1,15 @@
+%h1
+  Faculties controller, edit action
+%p
+  Edit this file in
+  %tt
+    app/views/faculties/edit.html.erb
+= error_messages_for @faculty
+
+= form_for(@faculty, :action => url(:faculty, @faculty)) do
+  %p
+    = submit "Update"
+
+= link_to 'Show', url(:faculty, @faculty)
+|
+= link_to 'Back', url(:faculties)
