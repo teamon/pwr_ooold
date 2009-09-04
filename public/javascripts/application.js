@@ -18,40 +18,50 @@ $(document).ready(function(){
           type: "DELETE",
           url: $(this).attr("href")
         })
-        $(this).parent().remove();
+        $(this).parent().parent().hide("slow").remove();
         return false
       })
     })
   }
+  if($("#imageUpload").length > 0){
   
-  $("#imageUpload").fileUpload ({
-    uploader: "/flash/uploader.swf",
-    script: "/lectures/" + $("#imageUpload").attr("rel") + "/images",
-    scriptData: flashUploadScriptData,
-    fileDataName: 'file',
-    cancelImg: "/images/cancel.png",
-    //auto: true,
-    multi: true,
-    folder: "/uploads",
-    onAllComplete: updateImagesList
-  })
+  
+    $("#imageUpload").fileUpload ({
+      uploader: "/flash/uploader.swf",
+      script: "/lectures/" + $("#imageUpload").attr("rel") + "/images",
+      scriptData: flashUploadScriptData,
+      fileDataName: 'file',
+      cancelImg: "/images/fancy_closebox.png",
+      //auto: true,
+      multi: true,
+      folder: "/uploads",
+      onAllComplete: updateImagesList
+    })
 
   
-  $("#startUpload").click(function(){
-    $('#imageUpload').fileUploadStart()
-    return false
-  })
+    $("#startUpload").click(function(){
+      $('#imageUpload').fileUploadStart()
+      return false
+    })
   
-  $("#clearQueue").click(function(){
-    $('#imageUpload').fileUploadClearQueue()
-    return false
-  })
+    $("#clearQueue").click(function(){
+      $('#imageUpload').fileUploadClearQueue()
+      return false
+    })
   
-  if($("#imageUpload").length > 0){
     updateImagesList()
   }
   
   $("#lecture_date").datepicker($.datepicker.regional['pl']);
+	$(".images a.img").fancybox()
 	
+	$("a.delete").click(function(){
+    if(confirm($(this).attr("rel"))){
+      form = $('<form method="post">').attr("action", this.href).append('<input type="hidden" value="DELETE" name="_method" />')
+      $("body").append(form)
+      form.submit()
+    }
+    return false;
+  })
 
 })

@@ -4,16 +4,13 @@
     %title
       pwr
     %meta(content="text/html; charset=utf-8" http-equiv="content-type")
-    = css_include_tag :reset, :grid, :ui, :master, :bundle => "app"
-    = js_include_tag :jquery, 'jquery.uploadify', 'jquery.ui', 'ui.datepicker-pl', :application, :bundle => "app"
+    = css_include_tag :reset, :grid, :ui, :master, 'jquery.fancybox', :bundle => "app"
+    = js_include_tag :jquery, 'jquery.uploadify', 'jquery.ui', 'ui.datepicker-pl', 'jquery.fancybox', :application, :bundle => "app"
     - if session.authenticated?
       :javascript
         var flashUploadScriptData = {#{Merb::Config[:session_id_key]}: "#{Merb::Parse.escape cookies[Merb::Config[:session_id_key]]}"}
   %body
     .grid
-      .grid12
-        - message.each_pair do |type, msg|
-          #message(class=type)= msg
       #top
         .grid8
           %h1= link_to "pwr", url(:homepage)
@@ -28,5 +25,11 @@
             = link_to "Zaloguj", url(:login)
             lub
             = link_to "Zarejestruj się", url(:login)
+        .grid12
+          - message.each_pair do |type, msg|
+            #message(class=type)= msg
       
       = catch_content :for_layout
+      #foot.grid12
+        &copy; 2009 
+        %a(href="http://teamon.eu") teamon

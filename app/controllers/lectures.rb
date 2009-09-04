@@ -2,7 +2,6 @@ class Lectures < Application
   # provides :xml, :yaml, :js
   
   before :ensure_authenticated, :exclude => [:index, :show]
-  # before :ensure_lecture_author, :only => [:edit, :update]
   
   before do
     if params[:faculty_id]
@@ -11,7 +10,11 @@ class Lectures < Application
   end
   
   def index
-    @lectures = Lecture.all
+    @lectures = unless params[:query].blank?
+      Lecture.all(:name.like => "%#{params[:query]}%")
+    else
+      Lecture
+    end.in_order
     display @lectures
   end
 
@@ -29,8 +32,9 @@ class Lectures < Application
   end
 
   def edit(id)
-    only_provides :html
     @lecture = get(id)
+    raise Unauthorized unless @lecture.author?(session.user)
+    only_provides :html
     display @lecture
   end
 
@@ -48,6 +52,7 @@ class Lectures < Application
 
   def update(id, lecture)
     @lecture = get(id)
+    raise Unauthorized unless @lecture.author?(session.user)
     if @lecture.update_attributes(lecture)
       redirect resource(@lecture, :edit), :message => "Zmiany zostały zapisane"
     else
@@ -57,6 +62,7 @@ class Lectures < Application
 
   def destroy(id)
     @lecture = get(id)
+    raise Unauthorized unless @lecture.author?(session.user)
     if @lecture.destroy
       redirect resource(:lectures)
     else

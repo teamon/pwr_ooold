@@ -4,3 +4,4 @@
       %div
         %img{:src => image.url(:thumbnail)}
         = link_to "Delete", resource(@lecture, image), :class => 'delete'
+        %span= image.filename

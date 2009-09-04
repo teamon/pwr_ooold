@@ -25,6 +25,9 @@ class Image
       mm = MiniMagick::Image.from_file(Merb.root / :public / obj.url)
       mm.resize("100x100")
       mm.write(Merb.root / :public / obj.url(:thumbnail))
+      
+      obj.lecture.create_package
+      
       obj
     end
   rescue Exception => e

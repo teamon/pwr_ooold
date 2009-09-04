@@ -3,10 +3,10 @@ class Users < Application
 
   before :ensure_authenticated, :only => [:edit, :update]
 
-  # def index
-  #   @users = User.all
-  #   display @users
-  # end
+  def index
+    @users = User.all
+    display @users
+  end
 
   def show(login)
     @user = User.first(:login => login)
@@ -29,7 +29,7 @@ class Users < Application
   def create(user)
     @new_user = User.new(user)
     if @new_user.save
-      redirect resource(@new_user), :message => {:notice => "User was successfully created"}
+      redirect resource(@new_user), :message => "Rejestracja zakończona pomyślnie"
     else
       render :template => 'exceptions/unauthenticated'
     end
@@ -44,15 +44,5 @@ class Users < Application
       display @user, :edit
     end
   end
-  # 
-  # def destroy(id)
-  #   @user = User.get(id)
-  #   raise NotFound unless @user
-  #   if @user.destroy
-  #     redirect resource(:users)
-  #   else
-  #     raise InternalServerError
-  #   end
-  # end
 
 end # Users

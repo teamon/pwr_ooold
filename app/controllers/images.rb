@@ -1,10 +1,7 @@
 class Images < Application
-  before :ensure_authenticated
-  # before :ensure_lecture_author
   
-  before do
-    @lecture = Lecture.get(params[:lecture_id]) || (raise NotFound)
-  end
+  before :ensure_authenticated
+  before :ensure_lecture_author
 
   def index
     @images = @lecture.images.in_order
@@ -31,6 +28,13 @@ class Images < Application
     else
       raise InternalServerError
     end
+  end
+  
+  protected 
+  
+  def ensure_lecture_author
+    @lecture = Lecture.get(params[:lecture_id]) || (raise NotFound)
+    raise Unauthorized unless @lecture.author?(session.user)
   end
 
 end # Images

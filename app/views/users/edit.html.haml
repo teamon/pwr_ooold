@@ -1,26 +1,28 @@
 .grid6
-  %h2 Profil
-  = form_for(@user, :action => resource(@user)) do
-    = default_error_messages_for @user
-    = fieldset do
-      %p= text_field :login, :label => "Login"
-      %p= text_field :email, :label => "Email"
-      %p= password_field :password, :label => "Hasło"
-      %p= password_field :password_confirmation, :label => "Potwierdź hasło"
-    = fieldset do
-      %p= text_field :name, :label => "Imię i nazwisko"
-      %p= select :faculty_id, :label => "Wydział", :collection => Faculty.all, :text_method => :full_name, :value_method => :id, :prompt => "", :selected => @user.faculty_id.to_s
-      %p= select :year, :label => "Rok studiów", :collection => User.properties[:year].options[:set].map {|e| e.to_s}, :prompt => ""
-    .actions= submit "Zapisz zmiany"
+  .box
+    %h2 Profil
+    = form_for(@user, :action => resource(@user)) do
+      = default_error_messages_for @user
+      = fieldset do
+        %p= text_field :login, :label => "Login"
+        %p= text_field :email, :label => "Email"
+        %p= password_field :password, :label => "Hasło"
+        %p= password_field :password_confirmation, :label => "Potwierdź hasło"
+      = fieldset do
+        %p= text_field :name, :label => "Imię i nazwisko"
+        %p= select :faculty_id, :label => "Wydział", :collection => Faculty.all, :text_method => :full_name, :value_method => :id, :prompt => "", :selected => @user.faculty_id.to_s
+        %p= select :year, :label => "Rok studiów", :collection => User.properties[:year].options[:set].map {|e| e.to_s}, :prompt => ""
+      .actions= submit "Zapisz zmiany"
     
-.grid6.lectures
-  %h2 Moje wykłady
-  %ul
-    - for lecture in @lectures
-      %li{:class => cycle("even", "odd")}
-        .date= format_datetime(lecture.date)
-        .name= link_to lecture.name, resource(lecture)
-        .faculty= link_to lecture.faculty.code, resource(lecture.faculty)
+.grid6
+  .box.lectures
+    %h2 Moje wykłady
+    %ul
+      - for lecture in @lectures
+        %li{:class => cycle("even", "odd")}
+          .date= format_datetime(lecture.date)
+          .name= link_to lecture.name, resource(lecture)
+          .faculty= link_to lecture.faculty.code, resource(lecture.faculty)
   
-.grid6.comments.push6
-  %h2 Moje komentarze
+  .box.comments
+    %h2 Moje komentarze

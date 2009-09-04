@@ -1,20 +1,21 @@
 .grid6
-  %h2 Dodaj nowy wykład
-  %span.desc 
-    Wydział:
-    = link_to @faculty.full_name, resource(@faculty)
-    (
-    = link_to "Zmień wydział", url(:homepage), :class => "light"
-    )
-  = form_for(@lecture, :action => resource(@faculty, :lectures)) do
-    = default_error_messages_for @lecture
-    = fieldset do
-      %p= text_field :name, :label => "Nazwa"
-      %p= text_area :description, :label => "Opis"
-      %p= text_field :date, :label => "Data i godzina", :value => format_datetime(@lecture.date)
-      %p
-        %span.info yyyy-mm-dd hh:mm
+  .box
+    %h2 Dodaj nowy wykład
+    %span.desc 
+      Wydział:
+      = link_to @faculty.full_name, resource(@faculty)
+      (
+      = link_to "Zmień wydział", url(:homepage), :class => "light"
+      )
+    = form_for(@lecture, :action => resource(@faculty, :lectures)) do
+      = default_error_messages_for @lecture
+      = fieldset do
+        %p= text_field :name, :label => "Nazwa"
+        %p= text_area :description, :label => "Opis"
+        %p= text_field :date, :label => "Data i godzina", :value => format_datetime(@lecture.date)
+        %p
+          %span.info yyyy-mm-dd hh:mm
 
-    .actions
-      = submit "Dodaj"
-      Po dodaniu wykładu będziesz mógł dodać zdjęcia.
+      .actions
+        = submit "Dodaj"
+        Po dodaniu wykładu będziesz mógł dodać zdjęcia.

@@ -17,5 +17,6 @@ Merb::Router.prepare do
     match("/profile").to(:controller => "users", :action => "edit").name(:profile)
   end
   
+  match('/search/:query').to(:controller => "lectures", :action => "index").name(:search)
   match('/').to(:controller => 'faculties', :action =>'index').name(:homepage)
 end

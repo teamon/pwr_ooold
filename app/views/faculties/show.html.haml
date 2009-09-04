@@ -1,10 +1,13 @@
 .grid8
-  %h2= @faculty.full_name
-  %ul#lectures
-    - for lecture in @lectures
-      %li{:class => cycle("even", "odd")}
-        .date= format_datetime(lecture.date)
-        .name= link_to lecture.name, resource(lecture)
-        .author= link_to lecture.user.login, resource(lecture.user)
-.grid4.menu
-  = link_to "Dodaj wykład", resource(@faculty, :lectures, :new), :class => "button"
+  .box
+    %h2= @faculty.full_name
+    %ul#lectures
+      - for lecture in @lectures
+        %li{:class => cycle("even", "odd")}
+          .date= format_datetime(lecture.date)
+          .name= link_to lecture.name, resource(lecture)
+          .author= link_to lecture.user.login, resource(lecture.user)
+        
+.grid4
+  .menu.box
+    = link_to "Dodaj wykład", resource(@faculty, :lectures, :new), :class => "button"

@@ -1,22 +1,26 @@
 .grid6
-  %h2= @lecture.name
-  %span.lecture_info
-    = format_datetime @lecture.date
-    \/
-    = link_to @lecture.faculty.full_name, resource(@lecture.faculty)
-    \/
-    = link_to @lecture.user.login, resource(@lecture.user)
+  .box
+    %h2= @lecture.name
+    %span.lecture_info
+      = format_datetime @lecture.date
+      \/
+      = link_to @lecture.faculty.full_name, resource(@lecture.faculty)
+      \/
+      = link_to @lecture.user.login, resource(@lecture.user)
 
-  .description= @lecture.description
+    .description= @lecture.description
   
-  .lecture_menu
-    = link_to "Pobierz wszystkie zdjęcia (.zip)", resource(@lecture, :package), :class => "button"
+    .lecture_menu
+      = link_to "Pobierz wszystkie zdjęcia (.zip, #{human_size(@lecture.package_size)})", resource(@lecture, :package), :class => "button"
+      - if session.authenticated? && @lecture.author?(session.user)
+        = link_to "Edytuj wykład", resource(@lecture, :edit)
 
-.grid6  
-  %h2 Zdjęcia
-  .images
-    %ul
-      - @images.each do |image|
-        %li{:id => image.id}
-          %div= link_to image_tag(image.url(:thumbnail)), image.url
-
+.grid6 
+  .box
+    %h2 Zdjęcia
+    .images
+      %ul
+        - @images.each do |image|
+          %li{:id => image.id}
+            = link_to_image(image)
+            
