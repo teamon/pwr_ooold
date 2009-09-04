@@ -7,6 +7,7 @@ module Merb
     end
     
     def human_size(size)
+      return "0 B" if size == 0
       size = Float(size)
       suffix = %w(B KB MB GB TB)
       max_exp = suffix.size - 1
@@ -24,6 +25,10 @@ module Merb
           human_size(image.size)
         )
       ), image.url, :title => image.filename, :class => "img", :rel => "photos"
+    end
+    
+    def textilize(text)
+      RedCloth.new(text).to_html
     end
     
   end

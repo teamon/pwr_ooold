@@ -2,14 +2,8 @@
   = form_for(@lecture, :action => resource(@lecture)) do
     .box
       %h2 Edytuj wykład
-    
-      = default_error_messages_for @lecture
-      = fieldset do
-        %p= text_field :name, :label => "Nazwa"
-        %p= text_area :description, :label => "Opis"
-        %p= text_field :date, :label => "Data i godzina"
-        %p
-          %span.info yyyy-mm-dd hh:mm
+      = partial 'form'
+
       .actions
         = submit "Zapisz"
         = link_to "Przejdź do strony wykładu", resource(@lecture)

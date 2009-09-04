@@ -8,7 +8,7 @@
       \/
       = link_to @lecture.user.login, resource(@lecture.user)
 
-    .description=h @lecture.description
+    .description=textilize @lecture.description
   
     .lecture_menu
       = link_to "Pobierz wszystkie zdjęcia (.zip, #{human_size(@lecture.package_size)})", resource(@lecture, :package), :class => "button"
@@ -26,7 +26,7 @@
             = link_to "#", resource(@lecture) + "#comment#{comment.id}", :class => "permalink", :title => "permalink"
             = link_to comment.user.login, resource(comment.user)
           .content
-            = comment.content
+            =textilize comment.content
       
   - if session.authenticated?
     #new_comment.box

@@ -25,12 +25,8 @@ dependency "data_objects", do_gems_version
 dependency "do_sqlite3", do_gems_version # If using another database, replace this
 dependency "dm-core", dm_gems_version         
 dependency "dm-aggregates", dm_gems_version   
-# dependency "dm-migrations", dm_gems_version   
-dependency "dm-timestamps", dm_gems_version   
-# dependency "dm-types", dm_gems_version        
+dependency "dm-timestamps", dm_gems_version  
 dependency "dm-validations", dm_gems_version  
-# dependency "dm-serializer", dm_gems_version   
-
 dependency "dm-sweatshop", dm_gems_version
 dependency "dm-pagination", "0.3.7"
 
@@ -40,6 +36,6 @@ dependency "teamon-merb-colorful-logger", :require_as => "merb-colorful-logger"
 dependency "teamon-merb-flash", :require_as => "merb-flash"
 # dependency "teamon-merb-ext", :require_as => "merb-ext"
 dependency "merb-ext", "0.1.1"
-
 dependency "mini_magick", "1.2.5"
 dependency "rubyzip", "0.9.1", :require_as => "zip/zip"
+dependency "RedCloth", "4.2.2"

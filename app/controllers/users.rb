@@ -2,6 +2,7 @@ class Users < Application
   # provides :xml, :yaml, :js
 
   before :ensure_authenticated, :only => [:edit, :update]
+  params_protected :user => [:admin]
 
   def index
     @users = User.all

@@ -23,6 +23,7 @@ class Lecture
   
   def package
     path, name = package_path_and_name
+    create_package unless File.exist?(path)
     [path, {:filename => name }]
   end
   
@@ -49,7 +50,7 @@ class Lecture
   
   def package_size
     path, name = package_path_and_name
-    File.size(path)
+    File.exist?(path) ? File.size(path) : 0
   end
   
   def author?(user)

@@ -1,0 +1,11 @@
+= default_error_messages_for @lecture
+= fieldset do
+  %p= text_field :name, :label => "Nazwa"
+  %p= text_area :description, :label => "Opis"
+  %p
+    %span.info 
+      W opisie można korzystać z
+      %a(href="http://redcloth.org/textile") textile
+  %p= text_field :date, :label => "Data i godzina", :value => format_datetime(@lecture.date)
+  %p
+    %span.info yyyy-mm-dd hh:mm

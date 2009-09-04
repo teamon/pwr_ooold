@@ -95,6 +95,8 @@ form .actions  {
 
 form span.info {
   padding-left: 115px;
+  padding-bottom: 5px;
+  padding-top: 2px;
   color: #999;
   float: left;
 }
@@ -551,6 +553,22 @@ dd {
   float: left;
   width: 300px;
   padding-left: 10px;
+}
+
+#comments li ul li {
+  border: none;
+  padding: 0;
+  list-style: disc inside;
+  margin: 0;
+}
+
+#comments li ul {
+  padding: 5px 10px;
+  list-style: disc;
+}
+
+em {
+  font-style: italic;
 }
 
 
