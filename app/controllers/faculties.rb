@@ -1,5 +1,5 @@
 class Faculties < Application
-  # provides :xml, :yaml, :js
+  provides :xml
   
   def index
     @faculties = Faculty.all(:order => [:id.asc])

@@ -12,3 +12,6 @@
 .grid4
   .menu.box
     = link_to "Dodaj wykład", resource(@faculty, :lectures, :new), :class => "button"
+    
+- throw_content :for_header do
+  %link{:rel => "alternate", :type => "application/rss+xml", :title => @faculty.full_name, :href => absolute_url(:faculty, @faculty, :format => :xml)}

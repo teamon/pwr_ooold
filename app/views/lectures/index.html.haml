@@ -9,3 +9,6 @@
   .box
     %h2 Wyszukiwarka
     = partial 'shared/search'
+    
+- throw_content :for_header do
+  %link{:rel => "alternate", :type => "application/rss+xml", :title => "Wszystkie wykłady", :href => absolute_url(:lectures, :format => :xml)}

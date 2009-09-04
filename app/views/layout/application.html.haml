@@ -9,6 +9,7 @@
     - if session.authenticated?
       :javascript
         var flashUploadScriptData = {#{Merb::Config[:session_id_key]}: "#{Merb::Parse.escape cookies[Merb::Config[:session_id_key]]}"}
+    = catch_content :for_header
   %body
     .grid
       #top

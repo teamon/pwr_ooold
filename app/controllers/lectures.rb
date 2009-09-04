@@ -1,5 +1,5 @@
 class Lectures < Application
-  # provides :xml, :yaml, :js
+  provides :xml
   
   before :ensure_authenticated, :exclude => [:index, :show]
   
@@ -14,7 +14,7 @@ class Lectures < Application
       Lecture.all(:name.like => "%#{params[:query]}%")
     else
       Lecture
-    end.in_order.paginate(:page => params[:page], :per_page => 10)
+    end.recent.paginate(:page => params[:page], :per_page => 10)
     display @lectures
   end
 

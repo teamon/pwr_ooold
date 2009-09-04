@@ -3,7 +3,7 @@
     %h2 Wybierz wydział
     %ul
       - for faculty in @faculties
-        %li= link_to faculty.full_name_with_lectures_count, resource(faculty)
+        %li= link_to faculty.full_name, resource(faculty)
       %li.all= link_to "Wszystkie wykłady", resource(:lectures)
       
 .grid6
@@ -25,3 +25,6 @@
           .lecture
             = link_to comment.lecture.name, resource(comment.lecture)
             = link_to comment.user.login, resource(comment.user)
+
+- throw_content :for_header do
+  %link{:rel => "alternate", :type => "application/rss+xml", :title => "Wszystkie wykłady", :href => absolute_url(:lectures, :format => :xml)}

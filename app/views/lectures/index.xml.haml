@@ -1,0 +1,16 @@
+!!!XML
+%rss(version="2.0")
+  %channel
+    %title Wszystkie wykłady
+    %link= absolute_url(:lectures)
+    %description
+    %language pl_PL
+    %pubDate= Time.now.rfc822
+    
+    - for lecture in @lectures    
+      %item
+        %title&= lecture.name
+        %description&= textilize lecture.description
+        %link= absolute_url(:lecture, lecture)
+        %author&= lecture.user.login
+        %pubDate= lecture.date
