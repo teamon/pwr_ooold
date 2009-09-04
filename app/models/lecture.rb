@@ -14,6 +14,7 @@ class Lecture
   belongs_to :user
   
   has n, :images
+  has n, :comments
   
   before :destroy do
     self.images.each {|i| i.destroy }

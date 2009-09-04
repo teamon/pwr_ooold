@@ -14,3 +14,14 @@
   .box.lectures
     %h2 Ostatnio dodane wykłady
     = partial 'shared/lectures'
+    
+  .box.comments
+    %h2 Ostatnio dodane komentarze
+    %ul
+      - for comment in @comments
+        %li
+          .date= format_datetime(comment.created_at)
+          .content= link_to truncate(comment.content, 70), resource(comment.lecture) + "#comment#{comment.id}"
+          .lecture
+            = link_to comment.lecture.name, resource(comment.lecture)
+            = link_to comment.user.login, resource(comment.user)

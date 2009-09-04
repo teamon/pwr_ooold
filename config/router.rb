@@ -3,6 +3,7 @@ Merb::Router.prepare do
   
   resources :lectures, :member => {:package => :get} do
     resources :images, :collection => {:update_positions => :post}
+    resources :comments
   end  
   
   resources :users, :identify => :login
@@ -13,10 +14,7 @@ Merb::Router.prepare do
   
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
   
-  authenticate do
-    match("/profile").to(:controller => "users", :action => "edit").name(:profile)
-  end
-  
+  match("/profile").to(:controller => "users", :action => "edit").name(:profile)
   match('/search/:query').to(:controller => "lectures", :action => "index").name(:search)
   match('/').to(:controller => 'faculties', :action =>'index').name(:homepage)
 end

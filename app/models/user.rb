@@ -13,5 +13,6 @@ class User
   validates_present :faculty
   
   has n, :lectures
+  has n, :comments
 
 end

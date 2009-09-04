@@ -1,6 +1,6 @@
 %ul
   - for lecture in @lectures
-    %li{:class => cycle("even", "odd")}
+    %li
       .date= format_datetime(lecture.date)
       .name= link_to lecture.name, resource(lecture)
       .author

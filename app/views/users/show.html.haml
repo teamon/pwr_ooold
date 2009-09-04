@@ -18,10 +18,16 @@
     %h2 Dodane wykłady
     %ul
       - for lecture in @lectures
-        %li{:class => cycle("even", "odd")}
+        %li
           .date= format_datetime(lecture.date)
           .name= link_to lecture.name, resource(lecture)
-          .faculty= link_to lecture.faculty.code, resource(lecture.faculty)
+          .author= link_to lecture.faculty.code, resource(lecture.faculty)
   
   .box.comments
     %h2 Dodane komentarze
+    %ul
+      - for comment in @comments
+        %li
+          .date= format_datetime(comment.created_at)
+          .content= link_to truncate(comment.content, 70), resource(comment.lecture) + "#comment#{comment.id}"
+          .lecture= link_to comment.lecture.name, resource(comment.lecture)

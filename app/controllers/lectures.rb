@@ -21,6 +21,8 @@ class Lectures < Application
   def show(id)
     @lecture = get(id)
     @images = @lecture.images.in_order
+    @comments = @lecture.comments.in_order
+    @comment = @lecture.comments.new
     display @lecture
   end
 

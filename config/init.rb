@@ -22,9 +22,7 @@ Merb::BootLoader.before_app_loads do
 end
  
 Merb::BootLoader.after_app_loads do
-  Merb::Plugins.config[:dm_pagination] = {
-    :prev_label => '&laquo; Poprzednie',
-    :next_label => 'Następne &raquo;',
-  }
+  Merb::Plugins.config[:dm_pagination][:prev_label] = '&laquo; Poprzednie'
+  Merb::Plugins.config[:dm_pagination][:next_label] = 'Następne &raquo;'
   # This will get executed after your app's classes have been loaded.
 end

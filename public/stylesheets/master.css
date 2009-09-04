@@ -153,8 +153,8 @@ p.upload a {
 #faculties ul li a {
   display: block;
   color: #000;
-  padding: 3px 15px;
-  font-size: 10pt;
+  padding: 5px 15px;
+  font-size: 11pt;
 }
 #faculties ul li span {
   color: #aaa;
@@ -242,7 +242,7 @@ form div.error {
   text-align: center;
   font-size: 9pt;
   border: 1px solid ;
-  margin: 0 10px 20px 10px;
+  margin: 0 15px 20px 15px;
   background: #FFFFBB;
   border: 1px solid #E0E046;
 }
@@ -250,7 +250,7 @@ form div.error {
 form div.error h3 { 
   font-size: 15px;
   border: none;
-  padding: 0;
+  padding: 5px 0 0 0 ;
 }
 
 form div.error ul { 
@@ -267,31 +267,32 @@ form div.error ul li {
 }
 .lectures li {
   padding: 5px 0;
-  margin: 0 5px;
+  margin: 0 15px;
   overflow: hidden;
   border-top: 1px dashed #ccc;
 }
 
 .lectures li .date {
   float: left;
-  width: 100px;
+  width: 70px;
   text-align: center;
-  color: #555;
+  color: #777;
 }
 
 .lectures li .name {
-  font-size: 11pt;
+  font-size: 10pt;
   float: left;
-  width: 300px;
+  width: 295px;
+  padding-left: 5px;
 }
 
 .grid8 .lectures li .name {
-  width: 460px;
+  width: 455px;
 }
 
 .lectures li .author {
   float: right;
-  width: 50px;
+  width: 60px;
   text-align: center;
 }
 
@@ -519,3 +520,71 @@ dd {
   text-decoration: none;
 }
 
+#new_comment textarea {
+  margin-left: 15px;
+  height: 100px;
+  width: 420px;
+}
+#new_comment .actions {
+  padding: 10px 0 5px 15px;
+}
+#new_comment .actions input {
+  margin-left: 0;
+}
+#comments li:first-child {
+  border: none;
+}
+#comments li {
+  padding: 5px 0;
+  margin: 5px 15px;
+  overflow: hidden;
+  border-top: 1px dashed #ccc;
+}
+#comments li .meta {
+  float: left;
+  width: 110px;
+  border-right: 1px solid #ccc;
+  color: #999;
+}
+
+#comments li .content {
+  float: left;
+  width: 300px;
+  padding-left: 10px;
+}
+
+
+
+.comments li:first-child {
+  border: none;
+}
+.comments li {
+  padding: 5px 0;
+  margin: 0 15px;
+  overflow: hidden;
+  border-top: 1px dashed #ccc;
+}
+
+.comments li .date {
+  float: left;
+  width: 70px;
+  text-align: center;
+  color: #777;
+}
+
+.comments li .lecture {
+  float: left;
+  width: 60px;
+  color: #555;
+}
+
+.comments li .content a{
+  float: left;
+  width: 295px;
+  font-size: 10pt;
+  padding-left: 5px;
+}
+
+a.permalink {
+  color: #555;
+}

@@ -4,6 +4,7 @@ class Faculties < Application
   def index
     @faculties = Faculty.all(:order => [:id.asc])
     @lectures = Lecture.recent(:limit => 10)
+    @comments = Comment.recent(:limit => 10)
     display @faculties
   end
 

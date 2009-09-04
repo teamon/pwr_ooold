@@ -3,11 +3,10 @@ module Merb
     # helpers defined here available to all views.  
     
     def format_datetime(datetime)
-      datetime.respond_to?(:strftime) ? datetime.strftime("%Y-%m-%d %H:%M") : ""
+      datetime.respond_to?(:strftime) ? datetime.strftime("%d.%m.%Y %H:%M") : ""
     end
     
     def human_size(size)
-      Merb.logger.d size
       size = Float(size)
       suffix = %w(B KB MB GB TB)
       max_exp = suffix.size - 1
