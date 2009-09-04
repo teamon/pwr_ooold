@@ -52,7 +52,6 @@ $(document).ready(function(){
     updateImagesList()
   }
   
-  $("#lecture_date").datepicker($.datepicker.regional['pl']);
 	$(".images a.img").fancybox()
 	
 	$("a.delete").click(function(){

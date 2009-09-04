@@ -606,3 +606,17 @@ em {
 a.permalink {
   color: #555;
 }
+
+span.datetime {
+  float: left;
+  width: 340px;
+  overflow: hidden;
+}
+
+span.datetime select {
+  width: auto;
+}
+
+span.datetime select.hour {
+  margin-left: 20px;
+}

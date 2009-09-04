@@ -31,5 +31,19 @@ module Merb
       RedCloth.new(text).to_html
     end
     
+    def datetime_picker(object, field, opts = {})
+      name = "#{object.class.to_s.snake_case}[#{field}]"
+      sel = object.send(field) || DateTime.now
+      
+      tag(:span,
+        select(:name => "#{name}[day]",   :class => "day",   :selected => sel.day.to_s,                 :collection => (1..31).map{|e|e.to_s}) +
+        select(:name => "#{name}[month]", :class => "month", :selected => sel.month.to_s.rjust(2, "0"), :collection => (1..12).map{|e|e.to_s.rjust(2, "0")}) +
+        select(:name => "#{name}[year]",  :class => "year",  :selected => sel.year.to_s,                :collection => (2007..2015).map{|e|e.to_s}) +
+        select(:name => "#{name}[hour]",  :class => "hour",  :selected => sel.hour.to_s.rjust(2, "0"),  :collection => (0..23).map{|e|e.to_s.rjust(2, "0")}) +
+        select(:name => "#{name}[min]",   :class => "min",   :selected => sel.min.to_s,                 :collection => (0..11).map{|e|(e*5).to_s.rjust(2, "0")}),
+        :class => "datetime"
+      )
+    end
+    
   end
 end

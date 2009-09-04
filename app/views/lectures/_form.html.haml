@@ -6,6 +6,6 @@
     %span.info 
       W opisie można korzystać z
       %a(href="http://redcloth.org/textile") textile
-  %p= text_field :date, :label => "Data i godzina", :value => format_datetime(@lecture.date)
   %p
-    %span.info yyyy-mm-dd hh:mm
+    = label "Date i godzina"
+    = datetime_picker @lecture, :date
