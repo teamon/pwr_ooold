@@ -14,7 +14,7 @@ class Lectures < Application
       Lecture.all(:name.like => "%#{params[:query]}%")
     else
       Lecture
-    end.in_order
+    end.in_order.paginate(:page => params[:page], :per_page => 10)
     display @lectures
   end
 

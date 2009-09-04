@@ -2,6 +2,7 @@
   .box.lectures
     %h2 Wszystkie wykłady
     = partial 'shared/lectures'
+  = paginate @lectures, :route => :lectures
   
   
 .grid4

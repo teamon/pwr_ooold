@@ -60,8 +60,8 @@ class Lecture
   end
   
   
-  def self.recent
-    all(:order => [:created_at.desc])
+  def self.recent(opts = {})
+    all({:order => [:created_at.desc]}.merge(opts))
   end
   
   def self.in_order

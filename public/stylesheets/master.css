@@ -452,47 +452,70 @@ dd {
   padding: 5px 10px;
 }
 
-/*
-form textarea { 
-  width:  400px; 
-  height: 200px;
-  line-height: 14px;
-}
-
-form select { 
-  height: auto; 
-  width: 316px;
-  border: 1px solid;
-}
 
 
-table {
-  width: 100%;
-  border-bottom: 1px dotted #ccc;
+
+#users ul {
+  padding: 0 15px;
 }
-table td {
-  padding: 5px;
+#users li:first-child {
+  border: none;
 }
-table th {
-  color: #000;
-  font-weight: bold;  
-  padding:5px;
-  border-bottom: 1px dotted #ccc;
-}
-table tr:hover td {
-  background-color: rgb(244, 250, 255);
+#users li {
+  padding: 5px 0;
+  overflow: hidden;
+  border-top: 1px dashed #ccc;
 }
 
-
-a.button {
-    background-color: rgb(52, 141, 211);
-  border: 1px solid rgb(163, 200, 233);
-  color: #fff;
-  padding: 3px 6px;
-  float: right;
+#users li .login {
   font-size: 9pt;
+  float: left;
+  width: 120px;
+  text-align: left;
+  color: #555;
+}
+
+#users li .name {
+  font-size: 9pt;
+  float: left;
+  width: 370px;
+}
+
+#users li .faculty {
+  float: right;
+  width: 100px;
+  text-align: center;
 }
 
 
-table .id { width: 50px;}
-table .options { text-align: right;}*/
+.pagination {
+  margin-top: -20px;
+  font-size: 9pt;
+  overflow: hidden;
+}
+.pagination a, .pagination span {
+  display: block;
+  float: left;
+  padding: 5px 10px;
+  margin: 1px;
+  background-color: #f5f5f5;
+}
+.pagination span a {
+  padding: 5px 10px;
+  margin: 0;
+}
+.pagination span.disabled {
+  padding: 0;
+}
+.pagination span.current, .pagination span.next, .pagination span.prev {
+  padding: 5px 10px;
+}
+.pagination .prev {
+  padding-left: 15px;
+}
+.pagination a:hover {
+  color: #eee;
+  background-color: #555;
+  text-decoration: none;
+}
+

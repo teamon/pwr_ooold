@@ -14,11 +14,17 @@ Merb::Config.use do |c|
   c[:session_secret_key]  = '5725354a5585f6c63013d67d98c23a910d83cbd7'  # required for cookie session store
   c[:session_id_key] = '_pwr_session_id' # cookie session id key, defaults to "_session_id"
 end
+
+
  
 Merb::BootLoader.before_app_loads do
   # This will get executed after dependencies have been loaded but before your app's classes have loaded.
 end
  
 Merb::BootLoader.after_app_loads do
+  Merb::Plugins.config[:dm_pagination] = {
+    :prev_label => '&laquo; Poprzednie',
+    :next_label => 'Następne &raquo;',
+  }
   # This will get executed after your app's classes have been loaded.
 end

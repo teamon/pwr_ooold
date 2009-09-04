@@ -1,16 +1,15 @@
-%h1
-  Users controller, index action
-%p
-  Edit this file in
-  %tt
-    app/views/users/index.html.erb
-%table
-  %tr
-  - for user in @users
-    %tr
-      %td
-        = link_to 'Show', url(:user, user)
-      %td
-        = link_to 'Edit', url(:edit_user,  user)
-
-= link_to 'New', url(:new_user)
+.grid8
+  #users.box
+    %h2 Lista użytkowników
+    %ul
+      - for user in @users
+        %li
+          .login= link_to user.login, resource(user)
+          .name= user.name
+          .faculty
+            = link_to user.faculty.code, resource(user.faculty)
+            (
+            = user.year
+            )
+     
+      

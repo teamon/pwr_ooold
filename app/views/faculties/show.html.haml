@@ -7,6 +7,7 @@
           .date= format_datetime(lecture.date)
           .name= link_to lecture.name, resource(lecture)
           .author= link_to lecture.user.login, resource(lecture.user)
+  = paginate @lectures, :route => :faculty
         
 .grid4
   .menu.box
