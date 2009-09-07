@@ -10,6 +10,11 @@
   = paginate @lectures, :route => :faculty
         
 .grid4
+
+  .box
+    %h2 Wyszukiwarka
+    = partial 'shared/search'
+
   .menu.box
     = link_to "Dodaj wykład", resource(@faculty, :lectures, :new), :class => "button"
     
