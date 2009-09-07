@@ -7,6 +7,7 @@ Merb::Router.prepare do
   end  
   
   resources :users, :identify => :login
+  resources :lecturers
   
   resources :faculties do
     resources :lectures

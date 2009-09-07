@@ -22,6 +22,18 @@ class Lecture
     delete_package
   end
   
+  def lecturer_name
+    lecturer ? lecturer.name : ""
+  end
+  
+  # lecturer.name rescue ""
+  
+  def lecturer_name=(name)
+    unless name.blank?
+      self.lecturer = Lecturer.first(:name => name) || Lecturer.create(:name => name)
+    end
+  end
+  
   def package
     path, name = package_path_and_name
     create_package unless File.exist?(path)

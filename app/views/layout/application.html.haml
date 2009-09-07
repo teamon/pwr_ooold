@@ -5,7 +5,7 @@
       pwr
     %meta(content="text/html; charset=utf-8" http-equiv="content-type")
     = css_include_tag :reset, :grid, :ui, :master, 'jquery.fancybox', :bundle => "app"
-    = js_include_tag :jquery, 'jquery.uploadify', 'jquery.ui', 'jquery.fancybox', :application, :bundle => "app"
+    = js_include_tag :jquery, 'jquery.uploadify', 'jquery.ui', 'jquery.ui.autocomplete', 'jquery.fancybox', :application, :bundle => "app"
     - if session.authenticated?
       :javascript
         var flashUploadScriptData = {#{Merb::Config[:session_id_key]}: "#{Merb::Parse.escape cookies[Merb::Config[:session_id_key]]}"}
