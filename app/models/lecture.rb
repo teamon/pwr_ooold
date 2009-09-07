@@ -12,6 +12,7 @@ class Lecture
   
   belongs_to :faculty
   belongs_to :user
+  belongs_to :lecturer
   
   has n, :images
   has n, :comments
