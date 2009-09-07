@@ -4,17 +4,15 @@ class Lectures < Application
   before :ensure_authenticated, :exclude => [:index, :show]
   
   before do
-    if params[:faculty_id]
-      @faculty = Faculty.get(params[:faculty_id]) || (raise NotFound)
+    unless params[:faculty].blank?
+      @faculty = Faculty.first(:code => params[:faculty]) || (raise NotFound)
     end
   end
   
   def index
-    @lectures = unless params[:query].blank?
-      Lecture.all(:name.like => "%#{params[:query]}%")
-    else
-      Lecture
-    end.recent.paginate(:page => params[:page], :per_page => 10)
+    @lectures = @faculty ? @faculty.lectures : Lecture
+    @lectures = @lectures.all(:name.like => "%#{params[:query]}%") unless params[:query].blank?
+    @lectures = @lectures.recent.paginate(:page => params[:page], :per_page => 10)
     display @lectures
   end
 

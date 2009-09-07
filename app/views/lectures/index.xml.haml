@@ -1,8 +1,8 @@
 !!!XML
 %rss(version="2.0")
   %channel
-    %title Wszystkie wykłady
-    %link= absolute_url(:lectures)
+    %title= @faculty ? "Wydział: #{@faculty.full_name}" : "Wszystkie wykłady"
+    %link= @faculty ? absolute_url(:faculty, :code => @faculty.code) : absolute_url(:lectures)
     %description
     %language pl_PL
     %pubDate= Time.now.rfc822

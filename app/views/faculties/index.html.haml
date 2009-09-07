@@ -3,7 +3,7 @@
     %h2 Wybierz wydział
     %ul
       - for faculty in @faculties
-        %li= link_to faculty.full_name, resource(faculty)
+        %li= link_to faculty.full_name, url(:faculty, faculty.code)
       %li.all= link_to "Wszystkie wykłady", resource(:lectures)
       
 .grid6

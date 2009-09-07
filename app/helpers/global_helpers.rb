@@ -28,7 +28,7 @@ module Merb
     end
     
     def textilize(text)
-      RedCloth.new(text).to_html
+      RedCloth.new(text || "").to_html
     end
     
     def datetime_picker(object, field, opts = {})

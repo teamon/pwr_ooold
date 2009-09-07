@@ -1,8 +1,10 @@
-%ul
+%table.lectures
   - for lecture in @lectures
-    %li
-      .date= format_datetime(lecture.date)
-      .name= link_to lecture.name, resource(lecture)
-      .author
-        = link_to lecture.faculty.code, resource(lecture.faculty) 
-        = link_to lecture.user.login, resource(lecture.user)
+    %tr
+      %td.date= format_datetime(lecture.date)
+      %td.name= link_to lecture.name, resource(lecture)
+      %td.meta
+        = link_to lecture.faculty.code, url(:faculty, lecture.faculty.code)
+        \/
+        = link_to lecture.lecturer.name, url(:lectures, :l => lecture.lecturer.id)
+        

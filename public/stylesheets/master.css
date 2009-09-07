@@ -166,41 +166,6 @@ p.upload a {
   color: #999;
 }
 
-#lectures {
-  padding: 0 15px;
-}
-
-#lectures li {
-  padding: 5px 0;
-  overflow: hidden;
-  border-top: 1px dashed #ccc;
-}
-
-#lectures li:first-child {
-  border: none;
-}
-
-#lectures li .date {
-  float: left;
-  width: 90px;
-  text-align: center;
-  color: #999;
-}
-
-#lectures li .name {
-  font-size: 11pt;
-  float: left;
-  width: 420px;
-}
-
-#lectures li .author {
-  float: right;
-  padding-right: 10px;
-  width: 70px;
-  text-align: right;
-}
-
-
 
 div.menu {
   padding: 15px;
@@ -228,18 +193,7 @@ a.light {
 }
 
 p.time select {width: auto;}
-/*
-#submit {
-    background-color: rgb(52, 141, 211);
-  border: 1px solid rgb(163, 200, 233);
-  color: #fff;
-  padding: 3px 6px;
-}
 
-form .actions input:hover {
-   cursor: pointer;
-}
-*/
 form div.error { 
   text-align: center;
   font-size: 9pt;
@@ -264,39 +218,32 @@ form div.error ul li {
   list-style-position: inside;
 }
 
-.lectures li:first-child {
+
+table.lectures {
+  margin: 0 15px;
+}
+tr:first-child td {
   border: none;
 }
-.lectures li {
+
+.lectures td {
   padding: 5px 0;
   margin: 0 15px;
   overflow: hidden;
   border-top: 1px dashed #ccc;
 }
-
-.lectures li .date {
-  float: left;
-  width: 70px;
-  text-align: center;
-  color: #777;
-}
-
-.lectures li .name {
-  font-size: 10pt;
-  float: left;
-  width: 295px;
-  padding-left: 5px;
-}
-
-.grid8 .lectures li .name {
-  width: 455px;
-}
-
-.lectures li .author {
-  float: right;
+.lectures .date {
+  font-size: 7pt;
   width: 60px;
   text-align: center;
+  color: #777;
+  padding-top: 7px;
 }
+.lectures .name {
+  font-size: 10pt;
+  padding: 5px;
+}
+
 
 .comments {
   margin-top: 20px;
@@ -371,11 +318,6 @@ form div.error ul li {
   text-decoration: none;
 }
 
-.lecture_info {
-  padding: 0 15px;
-  color: #999;
-}
-
 .description {
   padding: 15px;
   text-align: justify;
@@ -385,19 +327,51 @@ form div.error ul li {
   padding: 10px 15px 10px 15px;
 }
 
-dl {
-  padding: 0 15px;
-  
+.meta {
+  overflow: hidden;
 }
 
+#lecture dl {
+  float: left;
+  width: 200px;
+  overflow: hidden;
+}
+
+#lecture dt {
+  color: #999;
+}
+
+#lecture .left {
+  padding-right: 0;
+}
+#lecture .left dd {
+  width: 140px;
+}
+#lecture .left dt {
+  width: 50px;
+}
+
+#lecture .right {
+}
+#lecture .right dd {
+  width: 120px;
+}
+#lecture .right dt {
+  width: 70px;
+}
+
+dl {
+  padding: 0 15px;
+  overflow: hidden;
+}
 dt {
   float: left;
-  width: 100px;
+  width: 90px;
   text-align: right;
   padding-right:5px;
   padding-bottom: 5px;
+  color: #999;
 }
-
 dd {
   float: left;
   width: 300px;
@@ -425,7 +399,6 @@ dd {
 #top .grid4 {
   text-align: right;
 }
-
 #foot {
   text-align: left;
   color: #aaa;
@@ -439,14 +412,12 @@ dd {
 #search_form {
   padding-left: 15px;
 }
-
-.grid4 #search_form input.text {
+/*.grid4 #search_form input.text {
   width: 200px;
 }
 .grid6 #search_form input.text {
   width: 360px;
-}
-
+}*/
 #search_form input.submit {
   background-color: #4e4e4e;
   color: #f2f2f2;
@@ -454,7 +425,9 @@ dd {
   -webkit-border-radius: 4px;
   padding: 5px 10px;
 }
-
+/*#search_form #nil_class_lecturer {
+  width: 200px;
+}*/
 
 
 
@@ -521,6 +494,9 @@ dd {
   background-color: #555;
   text-decoration: none;
 }
+
+
+
 
 #new_comment textarea {
   margin-left: 15px;

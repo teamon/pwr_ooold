@@ -8,11 +8,11 @@ class Faculties < Application
     display @faculties
   end
 
-  def show(id)
-    @faculty = Faculty.get(id)
-    raise NotFound unless @faculty
-    @lectures = @faculty.lectures.in_order.paginate(:page => params[:page], :per_page => 10)
-    display @faculty
-  end
+  # def show(code)
+  #   @faculty = Faculty.first(:code => code)
+  #   raise NotFound unless @faculty
+  #   @lectures = @faculty.lectures.in_order.paginate(:page => params[:page], :per_page => 10)
+  #   display @faculty
+  # end
 
 end # Faculties

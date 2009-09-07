@@ -1,32 +1,39 @@
 .grid6
-  .box
+  .box#lecture
     %h2= @lecture.name
-    %span.lecture_info
-      = format_datetime @lecture.date
-      \/
-      = link_to @lecture.faculty.full_name, resource(@lecture.faculty)
-      \/
-      = link_to @lecture.user.login, resource(@lecture.user)
+    .meta
+      %dl.left
+        %dt Data:
+        %dd= format_datetime @lecture.date
+        %dt Wydział:
+        %dd= link_to @lecture.faculty.full_name, resource(@lecture.faculty)
+      %dl.right
+        %dt Prowadzący:
+        %dd= link_to @lecture.lecturer.name, url(:lectures, :l => @lecture.lecturer.id)
+        %dt Dodał:
+        %dd= link_to @lecture.user.login, resource(@lecture.user)
 
     .description=textilize @lecture.description
   
     .lecture_menu
-      = link_to "Pobierz wszystkie zdjęcia (.zip, #{human_size(@lecture.package_size)})", resource(@lecture, :package), :class => "button"
+      - if @lecture.images.size > 0
+        = link_to "Pobierz wszystkie zdjęcia (.zip, #{human_size(@lecture.package_size)})", resource(@lecture, :package), :class => "button"
       - if session.authenticated? && @lecture.author?(session.user)
         = link_to "Edytuj wykład", resource(@lecture, :edit)
-      
-  #comments.box
-    %h2 Komentarze
-    %ul
-      - for comment in @comments
-        %li
-          .meta
-            = format_datetime comment.created_at
-            %br
-            = link_to "#", resource(@lecture) + "#comment#{comment.id}", :class => "permalink", :title => "permalink"
-            = link_to comment.user.login, resource(comment.user)
-          .content
-            =textilize comment.content
+
+  - if @comments.size > 0      
+    #comments.box
+      %h2 Komentarze
+      %ul
+        - for comment in @comments
+          %li
+            .meta
+              = format_datetime comment.created_at
+              %br
+              = link_to "#", resource(@lecture) + "#comment#{comment.id}", :class => "permalink", :title => "permalink"
+              = link_to comment.user.login, resource(comment.user)
+            .content
+              =textilize comment.content
       
   - if session.authenticated?
     #new_comment.box

@@ -1,9 +1,8 @@
 .grid8
-  .box.lectures
-    %h2 Wszystkie wykłady
+  .box
+    %h2= @faculty ? "Wydział: #{@faculty.full_name}" : "Wszystkie wykłady"
     = partial 'shared/lectures'
-  = paginate @lectures, :route => :lectures
-  
+  = paginate @lectures, :route => @faculty ? :faculty : :lectures
   
 .grid4
   .box
@@ -11,4 +10,8 @@
     = partial 'shared/search'
     
 - throw_content :for_header do
-  %link{:rel => "alternate", :type => "application/rss+xml", :title => "Wszystkie wykłady", :href => absolute_url(:lectures, :format => :xml)}
+  - if @faculty
+    %link{:rel => "alternate", :type => "application/rss+xml", :title => "Wydział: #{@faculty.full_name}", :href => absolute_url(:faculty, :code => @faculty.code, :format => :xml)}
+  - else
+    %link{:rel => "alternate", :type => "application/rss+xml", :title => "Wszystkie wykłady", :href => absolute_url(:lectures, :format => :xml)}
+  

@@ -67,20 +67,26 @@ $(document).ready(function(){
   var data = "Core Selectors Attributes Traversing Manipulation CSS Events Effects Ajax Utilities".split(" ");
   
   // $('input#user-name').autocomplete({ajax: "/usernames.js"})
-  $("#lecture_lecturer_name").autocomplete("/lecturers.js", {
-     dataType: "json",
-     parse: function(data) {
-       return $.map(data, function(row) {
-         return {
-           data: row,
-           value: row.name,
-           result: row.name
-         }
-       });
-     },
-     formatItem: function(item) {
-       return item.name;
-     }
+  
+  [$("#nil_class_lecturer"), $("#lecture_lecturer_name")].forEach(function(e, i){
+    e.autocomplete("/lecturers.js", {
+       dataType: "json",
+       parse: function(data) {
+         return $.map(data, function(row) {
+           return {
+             data: row,
+             value: row.name,
+             result: row.name
+           }
+         });
+       },
+       formatItem: function(item) {
+         return item.name;
+       }
+    })
   })
+  
+  
+
 
 })

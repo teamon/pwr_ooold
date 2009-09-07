@@ -11,6 +11,7 @@ class Users < Application
 
   def show(login)
     @user = User.first(:login => login)
+    raise NotFound unless @user
     @lectures = @user.lectures
     @comments = @user.comments
     raise NotFound unless @user
