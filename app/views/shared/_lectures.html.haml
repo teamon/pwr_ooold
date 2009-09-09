@@ -1,6 +1,6 @@
 %table.lectures
   - for lecture in @lectures
-    %tr
+    %tr{:title => lecture.description}
       %td.date= format_datetime(lecture.date)
       %td.name= link_to lecture.name, resource(lecture)
       %td.meta

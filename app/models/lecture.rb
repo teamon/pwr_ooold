@@ -75,11 +75,11 @@ class Lecture
   end
   
   
-  def self.recent(opts = {})
-    all({:order => [:created_at.desc]}.merge(opts))
+  def self.recent
+    all(:order => [:created_at.desc])
   end
   
-  def self.in_order
+  def self.chronologically
     all(:order => [:date.desc])
   end
 

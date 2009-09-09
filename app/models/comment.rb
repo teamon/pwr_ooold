@@ -8,12 +8,12 @@ class Comment
   belongs_to :user
   belongs_to :lecture
   
-  def self.in_order(opts = {})
-    all({:order => [:created_at.asc]}.merge(opts))
+  def self.chronologically
+    all(:order => [:created_at.asc])
   end
   
-  def self.recent(opts = {})
-    all({:order => [:created_at.desc]}.merge(opts))
+  def self.recent
+    all(:order => [:created_at.desc])
   end
 
 end

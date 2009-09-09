@@ -1,6 +1,8 @@
-= form(:action => url(:lectures), :method => :get, :id => "search_form") do
+= form(:action => resource(:lectures, :search), :id => "search_form") do
   = fieldset do
     %p= text_field :query, :label => "Szukaj"
     %p= text_field :lecturer, :label => "Prowadzący"
+    - if @faculty
+      = hidden_field :faculty, :value => @faculty.code
     .actions= submit "Szukaj", :name => "", :id => "", :class => "submit"
     

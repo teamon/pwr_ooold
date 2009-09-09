@@ -35,7 +35,7 @@ class Image
     obj.destroy    
   end
   
-  def self.in_order
+  def self.ordered
     all(:order => [:position.asc])
   end
     

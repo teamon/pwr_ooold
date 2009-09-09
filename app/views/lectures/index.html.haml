@@ -2,12 +2,18 @@
   .box
     %h2= @faculty ? "Wydział: #{@faculty.full_name}" : "Wszystkie wykłady"
     = partial 'shared/lectures'
-  = paginate @lectures, :route => @faculty ? :faculty : :lectures
+  - if @lectures.num_pages > 0
+    = paginate @lectures, :route => @faculty ? :faculty : :lectures
   
 .grid4
-  .box
-    %h2 Wyszukiwarka
+  .box.search
+    %h2
+      Wyszukiwarka
+      - if @faculty
+        = "(#{@faculty.code})"
+        = link_to "Szukaj na wszystkich wydziałach", url(:lectures)
     = partial 'shared/search'
+    
     
 - throw_content :for_header do
   - if @faculty

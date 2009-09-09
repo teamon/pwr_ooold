@@ -3,8 +3,8 @@ class Faculties < Application
   
   def index
     @faculties = Faculty.all(:order => [:id.asc])
-    @lectures = Lecture.recent(:limit => 10)
-    @comments = Comment.recent(:limit => 10)
+    @lectures = Lecture.recent.all(:limit => 10)
+    @comments = Comment.recent.all(:limit => 10)
     display @faculties
   end
 

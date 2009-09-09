@@ -412,12 +412,10 @@ dd {
 #search_form {
   padding-left: 15px;
 }
-/*.grid4 #search_form input.text {
-  width: 200px;
+.grid4 #search_form input.text {
+  width: 180px;
 }
-.grid6 #search_form input.text {
-  width: 360px;
-}*/
+
 #search_form input.submit {
   background-color: #4e4e4e;
   color: #f2f2f2;
@@ -425,9 +423,25 @@ dd {
   -webkit-border-radius: 4px;
   padding: 5px 10px;
 }
+#search_form label {
+  width: 70px;
+}
+#search_form fieldset input.text {
+  width: 340px;
+}
+#search_form .actions {
+  padding-left: 80px;
+}
 /*#search_form #nil_class_lecturer {
   width: 200px;
 }*/
+
+.search h2 a {
+  font-size: 8pt;
+  font-weight: normal;
+  padding-top: 3px;
+  display: block;
+}
 
 
 
@@ -635,7 +649,7 @@ span.datetime select.hour {
 }
 
 .ac_loading {
-	background: white url('indicator.gif') right center no-repeat;
+	background: white url('/images/indicator.gif') right center no-repeat;
 }
 
 .ac_odd {

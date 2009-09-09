@@ -86,7 +86,5 @@ $(document).ready(function(){
     })
   })
   
-  
-
 
 })

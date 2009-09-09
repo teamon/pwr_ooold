@@ -19,10 +19,17 @@ def load_fixtures!
   @teamon = User.create(:login => "teamon", :email => "i@teamon.eu", :name => "Tymon Tobolski", 
       :password => "mapex", :password_confirmation => "mapex", :faculty => @w4, :year => 1) 
       
+  Lecturer.fix {{
+    :name => [/\w+/.gen.capitalize, /\w+/.gen.capitalize].join(" ")
+  }}
+  
+  20.times { Lecturer.gen }
+      
+      
   Lecture.fix {{
     :name => /[:sentence:]/.gen[0..49],
     :date => Time.now + rand(100).hours,
-    :lecturer_name => [/\w+/.gen.capitalize, /\w+/.gen.capitalize].join(" "),
+    :lecturer => Lecturer.pick,
     :user => @teamon,
     :faculty => Faculty.all[rand(13)],
     :description => /[:sentence:]+/.gen
