@@ -69,7 +69,7 @@ class Lectures < Application
   def update(id, lecture)
     @lecture = get(id)
     raise Unauthorized unless @lecture.author?(session.user)
-    if @lecture.update_attributes(lecture)
+    if @lecture.update(lecture)
       redirect resource(@lecture, :edit), :message => "Zmiany zostały zapisane"
     else
       display @lecture, :edit

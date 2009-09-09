@@ -15,7 +15,7 @@ class Images < Application
 
   def update_positions(positions)
     positions.each_with_index do |id, index|
-      @lecture.images.get(id).update_attributes(:position => index)
+      @lecture.images.get(id).update(:position => index)
     end
     
     ""

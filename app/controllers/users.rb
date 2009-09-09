@@ -40,7 +40,7 @@ class Users < Application
 
   def update(user)
     @user = session.user
-    if @user.update_attributes(user)
+    if @user.update(user)
        redirect url(:profile), :message => "Zmiany w profilu zostały zapisane"
     else
       @lectures = @user.lectures

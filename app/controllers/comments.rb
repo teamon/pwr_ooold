@@ -44,7 +44,7 @@ class Comments < Application
   # def update(id, comment)
   #   @comment = Comment.get(id)
   #   raise NotFound unless @comment
-  #   if @comment.update_attributes(comment)
+  #   if @comment.update(comment)
   #      redirect resource(@comment)
   #   else
   #     display @comment, :edit
