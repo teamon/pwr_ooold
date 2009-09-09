@@ -1,7 +1,7 @@
 class Lectures < Application
   provides :xml
   
-  before :ensure_authenticated, :exclude => [:index, :show]
+  before :ensure_authenticated, :exclude => [:index, :show, :search]
   
   before do
     unless params[:faculty].blank?
