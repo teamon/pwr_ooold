@@ -28,7 +28,7 @@ dependency "dm-core", dm_gems_version
 dependency "dm-aggregates", dm_gems_version   
 dependency "dm-timestamps", dm_gems_version  
 dependency "dm-validations", dm_gems_version  
-# dependency "dm-sweatshop", dm_gems_version
+dependency "dm-sweatshop", dm_gems_version
 dependency "dm-serializer", dm_gems_version
 dependency "dm-pagination", "0.3.7"
 
