@@ -32,7 +32,7 @@ dependency "dm-validations", dm_gems_version
 dependency "dm-serializer", dm_gems_version
 dependency "dm-pagination", "0.3.7"
 
-dependency "merb_datamapper", "1.1"
+dependency "merb_datamapper", merb_gems_version
 
 dependency "teamon-merb-colorful-logger", "0.1.4", :require_as => "merb-colorful-logger"
 dependency "teamon-merb-flash", "0.1.4", :require_as => "merb-flash"
