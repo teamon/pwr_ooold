@@ -9,7 +9,7 @@
         %dd= link_to @lecture.faculty.full_name, resource(@lecture.faculty)
       %dl.right
         %dt Prowadzący:
-        %dd= link_to @lecture.lecturer.name, url(:lectures, :l => @lecture.lecturer.id)
+        %dd= link_to @lecture.lecturer.name, url(:lectures, :lecturer => @lecture.lecturer.name)
         %dt Dodał:
         %dd= link_to @lecture.user.login, resource(@lecture.user)
 

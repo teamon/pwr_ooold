@@ -16,12 +16,7 @@
 .grid6
   .box.lectures
     %h2 Dodane wykłady
-    %ul
-      - for lecture in @lectures
-        %li
-          .date= format_datetime(lecture.date)
-          .name= link_to lecture.name, resource(lecture)
-          .author= link_to lecture.faculty.code, resource(lecture.faculty)
+    = partial 'shared/lectures'
   
   .box.comments
     %h2 Dodane komentarze

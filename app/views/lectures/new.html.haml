@@ -1,13 +1,7 @@
 .grid6
   .box
     %h2 Dodaj nowy wykład
-    %span.desc 
-      Wydział:
-      = link_to @faculty.full_name, resource(@faculty)
-      (
-      = link_to "Zmień wydział", url(:homepage), :class => "light"
-      )
-    = form_for(@lecture, :action => resource(@faculty, :lectures)) do
+    = form_for(@lecture, :action => resource(:lectures)) do
       = partial 'form'
 
       .actions

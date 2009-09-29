@@ -35,7 +35,7 @@ class Comments < Application
     if @comment.save
       redirect resource(@lecture), :message => "Komentarz został dodany"
     else
-      @images = @lecture.images.in_order
+      @images = @lecture.images.ordered
       @comments = @lecture.comments.in_order
       render :template => 'lectures/show'
     end

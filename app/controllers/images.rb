@@ -4,7 +4,7 @@ class Images < Application
   before :ensure_lecture_author
 
   def index
-    @images = @lecture.images.in_order
+    @images = @lecture.images.ordered
     display @images, :layout => false
   end
 

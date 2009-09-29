@@ -47,7 +47,7 @@ class Lecture
     Zip::ZipFile.open(path, Zip::ZipFile::CREATE) do |zip|
       zip.mkdir(name)
               
-      images.in_order.each_with_index do |image, index|
+      images.ordered.each_with_index do |image, index|
         ext = image.filename.split(".").last
         zip.get_output_stream("#{name}/#{index+1}.#{ext}") {|f| f.write File.read(Merb.root / :public / image.url)}
       end

@@ -1,6 +1,6 @@
 .grid8
   .box
-    %h2= @faculty ? "Wydział: #{@faculty.full_name}" : "Wszystkie wykłady"
+    %h2= @faculty ? "Wydział: #{@faculty.full_name}" : "Wszystkie wydziały"
     = partial 'shared/lectures'
   - if @lectures.num_pages > 0
     = paginate @lectures, :route => @faculty ? :faculty : :lectures
@@ -13,6 +13,9 @@
         = "(#{@faculty.code})"
         = link_to "Szukaj na wszystkich wydziałach", url(:lectures)
     = partial 'shared/search'
+
+  .box
+    = link_to "Dodaj wykład", resource(:lectures, :new), :class => "button"
     
     
 - throw_content :for_header do

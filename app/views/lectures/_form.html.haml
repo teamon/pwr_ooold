@@ -1,5 +1,6 @@
 = default_error_messages_for @lecture
 = fieldset do
+  %p= select :faculty_id, :collection => Faculty.all, :text_method => :full_name, :value_method => :id, :label => "Wydział", :prompt => "Wybierz"
   %p= text_field :name, :label => "Nazwa"
   %p= text_area :description, :label => "Opis"
   %p

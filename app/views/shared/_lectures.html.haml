@@ -6,5 +6,5 @@
       %td.meta
         = link_to lecture.faculty.code, url(:faculty, lecture.faculty.code)
         \/
-        = link_to lecture.lecturer.name, url(:lectures, :l => lecture.lecturer.id)
+        = link_to lecture.lecturer.name, url(:lectures, :lecturer => lecture.lecturer.name)
         

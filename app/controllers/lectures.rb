@@ -41,7 +41,7 @@ class Lectures < Application
   end
 
   def new
-    raise NotFound unless @faculty
+    # raise NotFound unless @faculty
     only_provides :html
     @lecture = Lecture.new
     display @lecture
@@ -55,10 +55,9 @@ class Lectures < Application
   end
 
   def create(lecture)
-    raise NotFound unless @faculty
+    # raise NotFound unless @faculty
     @lecture = Lecture.new(lecture)
     @lecture.user = session.user
-    @lecture.faculty = @faculty
     if @lecture.save
       redirect resource(@lecture, :edit), :message => "Wykład został dodany"
     else
