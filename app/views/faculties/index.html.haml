@@ -10,6 +10,10 @@
   .box
     %h2 Wyszukiwarka
     = partial 'shared/search'
+  
+  .box
+    = link_to "Dodaj wykład", resource(:lectures, :new), :class => "add button"
+  
 
   .box.lectures
     %h2 Ostatnio dodane wykłady

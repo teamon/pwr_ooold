@@ -10,7 +10,7 @@ class Lectures < Application
   end
   
   def index
-    @lectures = @faculty ? @faculty.lectures : Lecture    
+    @lectures = @faculty ? @faculty.lectures : Lecture
     @lectures = @lectures.all(:name.like => "%#{params[:query]}%") unless params[:query].blank?
     
     if !params[:lecturer].blank?
@@ -22,6 +22,9 @@ class Lectures < Application
     end
     
     @lectures = @lectures.chronologically.paginate(:page => params[:page], :per_page => 10)
+
+
+
     display @lectures
   end
   

@@ -180,6 +180,18 @@ a.button {
   padding: 5px 10px;
 }
 
+a.add {
+  display: block;
+  margin: 5px 10px;
+  font-size: 14pt;
+  padding: 10px;
+}
+
+a.add:hover {
+  background-color: #333;
+  text-decoration: none;
+}
+
 span.desc {
   display: block;
   padding-left: 15px;
