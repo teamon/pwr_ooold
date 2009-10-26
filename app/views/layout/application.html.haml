@@ -1,5 +1,5 @@
 !!! Strict
-%html{ html_attrs("en_us") }
+%html{ html_attrs("pl_PL") }
   %head
     %title
       pwr
@@ -19,13 +19,9 @@
           - if session.authenticated?
             = "Witaj #{session.user.login}"
             |
-            = link_to "Profil", url(:profile)
-            |
             = link_to "Wyloguj", url(:logout)
           - else
             = link_to "Zaloguj", url(:login)
-            lub
-            = link_to "Zarejestruj się", url(:login)
         .grid12
           - message.each_pair do |type, msg|
             #message(class=type)= msg

@@ -3,7 +3,7 @@ class Lecturers < Application
 
   def index(q = "")
     @lecturers = Lecturer.all(:name.like => "%#{q}%")
-    display @lecturers #.map{|e| e.name}.join("\n").to_s
+    display @lecturers
   end
 
 end # Lecturers

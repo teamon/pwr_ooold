@@ -15,7 +15,7 @@
     = partial 'shared/search'
 
   .box
-    = link_to "Dodaj wykład", resource(:lectures, :new), :class => "add button"
+    = link_to "Dodaj wykład", resource(:lectures, :new, :faculty_id => @faculty && @faculty.id), :class => "add button"
     
     
 - throw_content :for_header do

@@ -4,7 +4,7 @@ if prefix = ::Merb::Config[:path_prefix]
 end
 
 # preserving session for flash file upload
-require 'lib/rack_flash_upload'  
+require 'lib/rack_flash_upload'
 use Merb::Rack::SetSessionCookieFromFlash, Merb::Config[:session_id_key]
 
 # comment this out if you are running merb behind a load balancer

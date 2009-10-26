@@ -3,14 +3,8 @@
     %h2 
       Profil użytkownika:
       = @user.login
-    
-    %dl
-      %dt Imię i nazwisko:
-      %dd= @user.name
-      %dt Wydział:
-      %dd= link_to @user.faculty.full_name, resource(@user.faculty)
-      %dt Rok studiów:
-      %dd= @user.year
+    .lecture_menu
+      = link_to "Profil na forum"
       
     
 .grid6

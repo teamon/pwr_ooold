@@ -1,3 +1,11 @@
 class Application < Merb::Controller
-  log_params_filtered :password
+  
+  protected
+  
+  def ensure_authenticated
+    unless session.authenticated?
+      session[:redirect_to] = request.uri
+      raise Unauthorized
+    end
+  end
 end

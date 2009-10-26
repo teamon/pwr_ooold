@@ -1,6 +1,5 @@
 module Merb
   module GlobalHelpers
-    # helpers defined here available to all views.  
     
     def format_datetime(datetime)
       datetime.respond_to?(:strftime) ? datetime.strftime("%d.%m.%Y %H:%M") : ""
@@ -47,3 +46,4 @@ module Merb
     
   end
 end
+

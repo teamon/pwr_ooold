@@ -21,10 +21,10 @@ gem "merb-assets", merb_gems_version
 # end
 gem "merb-helpers", merb_gems_version
 # gem "merb-mailer", merb_gems_version
-gem "merb-slices", merb_gems_version
-gem "merb-auth-core", merb_gems_version
-gem "merb-auth-more", merb_gems_version
-gem "merb-auth-slice-password", merb_gems_version
+# gem "merb-slices", merb_gems_version
+# gem "merb-auth-core", merb_gems_version
+# gem "merb-auth-more", merb_gems_version
+# gem "merb-auth-slice-password", merb_gems_version
 gem "merb-param-protection", merb_gems_version
 gem "merb-exceptions", merb_gems_version
 gem "merb-gen", merb_gems_version
@@ -50,5 +50,5 @@ gem "merb-i18n", "0.2.3"
 gem "merb-ext", "0.1.1"
 
 gem "mini_magick", "1.2.5"
-gem "rubyzip", "0.9.1"
+gem "rubyzip", "0.9.1", :require_as => "zip/zip"
 gem "RedCloth", "4.2.2"

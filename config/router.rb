@@ -11,7 +11,15 @@ Merb::Router.prepare do
   
   resources :faculties, :identify => :code
   
-  slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
+  # slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
+  
+  with(:controller => "auth") do
+    match("/login").to(:action => "login").name(:login)
+    match("/logout").to(:action => "logout").name(:logout)
+    match("/auth/callback").to(:action => "callback")
+  end
+    
+  
   
   match("/profile").to(:controller => "users", :action => "edit").name(:profile)
   match("/:faculty").to(:controller => "lectures", :action => "index").name(:faculty)

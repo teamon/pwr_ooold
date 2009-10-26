@@ -46,7 +46,7 @@ class Lectures < Application
   def new
     # raise NotFound unless @faculty
     only_provides :html
-    @lecture = Lecture.new
+    @lecture = Lecture.new(:faculty_id => params[:faculty_id])
     display @lecture
   end
 
@@ -58,7 +58,6 @@ class Lectures < Application
   end
 
   def create(lecture)
-    # raise NotFound unless @faculty
     @lecture = Lecture.new(lecture)
     @lecture.user = session.user
     if @lecture.save

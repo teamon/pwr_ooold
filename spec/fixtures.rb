@@ -1,7 +1,7 @@
 def load_fixtures!
   include DataMapper::Sweatshop::Unique
   DataMapper.auto_migrate!
-  
+
   @skp = Faculty.create(:code => "SKP", :name => 'Studium Ksztacenia Podstawowego')
   @w1 = Faculty.create(:code => "W1", :name => 'Architektura')
   @w2 = Faculty.create(:code => "W2", :name => 'Budownictwo')
@@ -15,32 +15,24 @@ def load_fixtures!
   @w10 = Faculty.create(:code => "W10", :name => 'Mechaniczny')
   @w11 = Faculty.create(:code => "W11", :name => 'Podstawowych Problemów Techniki')
   @w12 = Faculty.create(:code => "W12", :name => 'Elektroniki Mikrosystemów i Fotoniki')
-  
-  @teamon = User.create(:login => "teamon", :email => "i@teamon.eu", :name => "Tymon Tobolski", 
-      :password => "mapex", :password_confirmation => "mapex", :faculty => @w4, :year => 1) 
-      
+
+  User.create(:id => 7, :login => "kisieel")
+
   Lecturer.fix {{
     :name => [/\w+/.gen.capitalize, /\w+/.gen.capitalize].join(" ")
   }}
-  
+
   20.times { Lecturer.gen }
-      
-      
+
   Lecture.fix {{
     :name => /[:sentence:]/.gen[0..49],
     :date => Time.now + rand(100).hours,
     :lecturer => Lecturer.pick,
-    :user => @teamon,
+    :user_id => 7,
     :faculty => Faculty.all[rand(13)],
     :description => /[:sentence:]+/.gen
   }}
-  
+
   50.times { Lecture.gen }
-  
-  # User.fix {{
-  #   :name => /\w+ \w+/.gen,
-  #   :email => unique {|i| "#{/\w+/.gen}@example.com" },
-  #   :password => (password = /\w+/.gen),
-  #   :password_confirmation => password
-  # }}
+
 end

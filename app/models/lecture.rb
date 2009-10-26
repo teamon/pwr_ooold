@@ -26,8 +26,6 @@ class Lecture
     lecturer ? lecturer.name : ""
   end
   
-  # lecturer.name rescue ""
-  
   def lecturer_name=(name)
     unless name.blank?
       self.lecturer = Lecturer.first(:name => name) || Lecturer.create(:name => name)
@@ -37,7 +35,7 @@ class Lecture
   def package
     path, name = package_path_and_name
     create_package unless File.exist?(path)
-    [path, {:filename => name }]
+    [path, { :filename => name }]
   end
   
   def create_package
