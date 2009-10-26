@@ -18,11 +18,10 @@ end
 
  
 Merb::BootLoader.before_app_loads do
-  # This will get executed after dependencies have been loaded but before your app's classes have loaded.
+  require 'lib/pauth'  
 end
  
 Merb::BootLoader.after_app_loads do
   Merb::Plugins.config[:dm_pagination][:prev_label] = '&laquo; Poprzednie'
   Merb::Plugins.config[:dm_pagination][:next_label] = 'Następne &raquo;'
-  # This will get executed after your app's classes have been loaded.
 end
