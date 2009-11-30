@@ -19,7 +19,7 @@ class Exceptions < Merb::Controller
   
   # handle Unauthorized exception (401)
   def unauthorized
-    render :format => :html
+    redirect url(:login)
   end
 
 end

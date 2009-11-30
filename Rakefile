@@ -37,3 +37,18 @@ task :fixtures => :merb_env do
   require "spec/fixtures"
   load_fixtures!
 end
+
+namespace :heroku do
+  desc "Create Heroku`s .gems file"
+  task :gems => :merb_env do
+    $GEMS = []
+
+    def bundle_path(*); nil; end
+    def gem(name, version, *args)
+      $GEMS << "#{name} -v #{version}"
+    end
+
+    Kernel.load "Gemfile"
+    File.open(".gems", "w") {|f| f.write $GEMS.join("\n") }
+  end
+end

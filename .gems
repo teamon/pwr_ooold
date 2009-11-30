@@ -1,0 +1,28 @@
+json_pure -v >= 1.1.7
+extlib -v >= 0.9.13
+templater -v >= 1.0.0
+randexp -v 0.1.4
+merb-core -v 1.1.0.pre
+merb-action-args -v 1.1.0.pre
+merb-assets -v 1.1.0.pre
+merb-helpers -v 1.1.0.pre
+merb-param-protection -v 1.1.0.pre
+merb-exceptions -v 1.1.0.pre
+merb-gen -v 1.1.0.pre
+merb-haml -v 1.1.0.pre
+data_objects -v 0.10.0
+do_postgres -v 0.10.0
+dm-core -v 0.10.0
+dm-aggregates -v 0.10.0
+dm-migrations -v 0.10.0
+dm-timestamps -v 0.10.0
+dm-types -v 0.10.0
+dm-validations -v 0.10.0
+dm-serializer -v 0.10.0
+dm-sweatshop -v 0.10.0
+merb_datamapper -v 1.1.0.pre
+dm-pagination -v 0.4.0
+merb-colorful-logger -v 0.1.5
+merb-flash -v 0.1.5
+merb-ext -v 0.1.2
+RedCloth -v 4.2.2

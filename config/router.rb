@@ -11,7 +11,6 @@ Merb::Router.prepare do
   
   resources :faculties, :identify => :code
   
-  # slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
   
   with(:controller => "auth") do
     match("/login").to(:action => "login").name(:login)

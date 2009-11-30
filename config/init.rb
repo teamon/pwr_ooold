@@ -1,4 +1,3 @@
- 
 use_orm :datamapper
 use_test :rspec
 use_template_engine :haml
@@ -16,6 +15,12 @@ end
 
 Merb::BootLoader.before_app_loads do
   require 'lib/pauth'
+  
+  class String 
+    def start_with?(little_string)
+      match(/^#{Regexp.escape(little_string)}/)
+    end
+  end
 end
 
 Merb::BootLoader.after_app_loads do

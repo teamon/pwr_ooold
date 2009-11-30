@@ -3,7 +3,8 @@
 development: &defaults
   # These are the settings for repository :default
   adapter:  sqlite3
-  database: sample_development.db
+  database: pwr_development.db
+  encoding: utf8
  
   # Add more repositories
   # repositories:
@@ -23,7 +24,8 @@ test:
  
 production:
   <<:       *defaults
-  database: production.db
+  adapter:  postgres
+  database: production
  
   # repositories:
   #   repo1:

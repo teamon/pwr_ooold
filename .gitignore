@@ -16,8 +16,8 @@ src/*
 .hgignore
 .hg/*
 .svn/*
-gems/gems/*
-gems/specifications/*
+bin/*
+gems/*
 merb_profile_results
 public/uploads/*
 public/packages/*
