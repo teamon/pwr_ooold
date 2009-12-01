@@ -26,3 +26,5 @@ merb-colorful-logger -v 0.1.5
 merb-flash -v 0.1.5
 merb-ext -v 0.1.2
 RedCloth -v 4.2.2
+net-ssh -v 2.0.16
+net-scp -v 1.0.2

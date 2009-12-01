@@ -52,6 +52,7 @@ gem "merb-flash", "0.1.5"
 # gem "merb-i18n", "0.2.3"
 gem "merb-ext", "0.1.2"
 
-# gem "mini_magick", "1.2.5"
-# gem "rubyzip", "0.9.1", :require_as => "zip/zip"
 gem "RedCloth", "4.2.2"
+gem "net-ssh", "2.0.16", :require_as => "net/ssh"
+gem "net-scp", "1.0.2", :require_as => "net/scp"
+

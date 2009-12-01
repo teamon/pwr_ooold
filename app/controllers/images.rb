@@ -10,7 +10,7 @@ class Images < Application
 
   def create(file)
     Image.create(:lecture => @lecture, :filedata => file)
-    "1"
+    "1" # flash upload requirement
   end
 
   def update_positions(positions)

@@ -18,15 +18,14 @@ class Image
       obj.lecture = opts[:lecture]
       obj.save
       
-      Dir.mkdir(Merb.root / :public / :uploads / obj.id)
+      Uploader.upload!(obj, file)
       
-      File.open(Merb.root / :public / obj.url, "wb") {|f| f.write file[:tempfile].read }
-      
-      mm = MiniMagick::Image.from_file(Merb.root / :public / obj.url)
-      mm.resize("100x100")
-      mm.write(Merb.root / :public / obj.url(:thumbnail))
-      
-      obj.lecture.create_package
+      # Dir.mkdir(Merb.root / :public / :uploads / obj.id)
+      # File.open(Merb.root / :public / obj.url, "wb") {|f| f.write file[:tempfile].read }
+      # mm = MiniMagick::Image.from_file(Merb.root / :public / obj.url)
+      # mm.resize("100x100")
+      # mm.write(Merb.root / :public / obj.url(:thumbnail))
+      # obj.lecture.create_package
       
       obj
     end
@@ -40,9 +39,7 @@ class Image
   end
     
   before :destroy do
-    FileUtils.rm(Merb.root / :public / url) rescue nil
-    FileUtils.rm(Merb.root / :public / url(:thumbnail)) rescue nil
-    FileUtils.rmdir(Merb.root / :public / :uploads / self.id) rescue nil
+    Uploader.delete!(self)
   end
   
   def url(type = nil)

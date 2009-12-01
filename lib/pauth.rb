@@ -30,7 +30,6 @@ class PAuth
   end
   
   def login_path
-    Merb.logger.d! params
     "http://" + @@host + (@@port.blank? ? "" : ":#{@@port}" ) + make_path(@@login_path, params)
   end
   
@@ -41,12 +40,7 @@ class PAuth
   protected
   
   def make_request(path, params)
-    Merb.logger.d! make_path(path, params)
-    
-    
     request = @http.get(make_path(path, params))
-    
-    Merb.logger.d request
     
     if request.code.to_i == 200
       puts request.body

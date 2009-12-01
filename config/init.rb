@@ -32,9 +32,14 @@ Merb::BootLoader.after_app_loads do
     c.consumer_secret = "p8h243p9g3g"
     c.host = "localhost"
     c.port = 80
-    c.request_token_path = "/server_php/index.php?action=request_token"
-    c.access_token_path = "/server_php/index.php?action=access_token"
-    c.data_path = "/server_php/index.php?action=data"
-    c.login_path = "/server_php/index.php?action=login"
+    c.request_token_path = "/auth/server_php/index.php?action=request_token"
+    c.access_token_path = "/auth/server_php/index.php?action=access_token"
+    c.data_path = "/auth/server_php/index.php?action=data"
+    c.login_path = "/auth/server_php/index.php?action=login"
   end
+  
+  Merb::Config[:ssh] = YAML.load(File.read(Merb.root / :config / 'ssh.yml')).to_mash
+  
+  require 'lib/uploader'
+  Uploader.start!
 end
