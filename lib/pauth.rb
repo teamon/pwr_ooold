@@ -44,7 +44,12 @@ class PAuth
     
     if request.code.to_i == 200
       puts request.body
-      JSON.parse(request.body).to_mash
+      begin
+        JSON.parse(request.body).to_mash 
+      rescue
+        # TODO: send notification!
+        raise Error.new("Auth server problem. Please contact with admin")
+      end
     else
       raise Error.new(request.msg)
     end
