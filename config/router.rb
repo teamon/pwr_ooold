@@ -1,6 +1,6 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
-  add_slice(:merb_admin, :path_prefix => "admin")
+  # add_slice(:merb_admin, :path_prefix => "admin")
   
   resources :lectures, :member => {:package => :get}, :collection => {:search => :post} do
     resources :images, :collection => {:update_positions => :post}

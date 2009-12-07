@@ -15,15 +15,42 @@ end
 
 Merb::BootLoader.before_app_loads do
   require 'lib/pauth'
+  require 'lib/uploader'
+end
+
+Merb::BootLoader.after_app_loads do
+  
+  # I hate monkeypatching...
   
   class String 
     def start_with?(little_string)
       match(/^#{Regexp.escape(little_string)}/)
     end
   end
-end
-
-Merb::BootLoader.after_app_loads do
+  
+  module DmPagination
+    class PaginationBuilder
+      def initialize(context, pagination, *args, &block)
+        @context = context
+        @pagination = pagination
+        @block = block
+        @options = args.last.kind_of?(Hash) ? args.pop : {}
+        @options[:page] ||= :page
+        @options[:route] ||= request.route.name
+        @args = args.blank? ? [:prev, :pages, :next] : args
+      end
+      
+    private
+    
+      def url(params)
+        @context.params.delete(:action)
+        @context.params.delete(:controller)
+        @context.url(@options[:route], @context.params.merge(params))
+      end  
+    end
+  end
+  
+  
   Merb::Plugins.config[:dm_pagination][:prev_label] = '&laquo; Poprzednie'
   Merb::Plugins.config[:dm_pagination][:next_label] = 'Następne &raquo;'
   
@@ -38,6 +65,5 @@ Merb::BootLoader.after_app_loads do
     c.login_path = "/auth/server_php/index.php?action=login"
   end
   
-  require 'lib/uploader'
   Uploader.start!
 end
