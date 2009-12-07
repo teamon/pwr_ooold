@@ -24,7 +24,7 @@ gem "merb-assets", merb_gems_version
 # end
 gem "merb-helpers", merb_gems_version
 # gem "merb-mailer", merb_gems_version
-# gem "merb-slices", merb_gems_version
+gem "merb-slices", merb_gems_version
 # gem "merb-auth-core", merb_gems_version
 # gem "merb-auth-more", merb_gems_version
 # gem "merb-auth-slice-password", merb_gems_version
@@ -34,7 +34,15 @@ gem "merb-gen", merb_gems_version
 gem "merb-haml", merb_gems_version
 
 gem "data_objects", do_gems_version
-gem "do_postgres", do_gems_version
+
+only :production do
+  gem "do_postgres", do_gems_version
+end
+
+only :development do
+  gem "do_sqlite3", do_gems_version
+end
+
 gem "dm-core", dm_gems_version
 gem "dm-aggregates", dm_gems_version
 gem "dm-migrations", dm_gems_version
@@ -46,11 +54,12 @@ gem "dm-sweatshop", dm_gems_version
 
 gem "merb_datamapper", merb_gems_version
 
-gem "dm-pagination", "0.4.0"
+gem "dm-pagination", "0.3.6"
 gem "merb-colorful-logger", "0.1.5"
 gem "merb-flash", "0.1.5"
 # gem "merb-i18n", "0.2.3"
 gem "merb-ext", "0.1.2"
+gem "merb-admin", "0.7.0"
 
 gem "RedCloth", "4.2.2"
 gem "net-ssh", "2.0.16", :require_as => "net/ssh"
