@@ -1,10 +1,17 @@
 TODO:
- * admin panel
+ * admin panel (merb-admin + auth!)
  * nie tylko zdjecia
  * wyszukiwarka po dacie
  * ustawienia
  * powiadomienia
  * podswietlenie wyszukania
  * cache
- * zmiana image_magick na cos z javy
+ 
+ * obsluga bledow
+  - PAuth
+  - SCP
+
+ * upload box
+ * http cache
+ * kalendarz
  

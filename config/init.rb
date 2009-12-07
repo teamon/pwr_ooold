@@ -28,8 +28,8 @@ Merb::BootLoader.after_app_loads do
   Merb::Plugins.config[:dm_pagination][:next_label] = 'Następne &raquo;'
   
   PAuth.configure do |c|
-    c.consumer_key = "qp9hqefpuh34f"
-    c.consumer_secret = "p8h243p9g3g"
+    c.consumer_key = ENV["PAUTH_KEY"]
+    c.consumer_secret = ENV["PAUTH_SECRET"]
     c.host = "localhost"
     c.port = 80
     c.request_token_path = "/auth/server_php/index.php?action=request_token"
@@ -37,8 +37,6 @@ Merb::BootLoader.after_app_loads do
     c.data_path = "/auth/server_php/index.php?action=data"
     c.login_path = "/auth/server_php/index.php?action=login"
   end
-  
-  Merb::Config[:ssh] = YAML.load(File.read(Merb.root / :config / 'ssh.yml')).to_mash
   
   require 'lib/uploader'
   Uploader.start!

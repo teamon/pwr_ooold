@@ -1,5 +1,5 @@
 class Uploader
-  @config = [Merb::Config[:ssh][:host], Merb::Config[:ssh][:user], {:password => Merb::Config[:ssh][:pass]}]
+  @config = [ENV["SCP_HOST"], ENV["SCP_LOGIN"], {:password => ENV["SCP_PASSWORD"]}]
   @images = []
   
   class << self
@@ -23,7 +23,7 @@ class Uploader
             case cmd[0]
             when :upload
               image, file = cmd[1], cmd[2]
-              path = "/home/teamon/upload/#{image.id}/"
+              path = "/home/pewuer/upload/#{image.id}/"
         
               Net::SSH.start(*@config) do |ssh|
                 ssh.exec!("mkdir -p #{path}")
@@ -39,7 +39,7 @@ class Uploader
               
             when :delete
               image = cmd[1]
-              path = "/home/teamon/upload/#{image.id}/"
+              path = "/home/pewuer/upload/#{image.id}/"
               Net::SSH.start(*@config) do |ssh|
                 ssh.exec!("rm -r #{path}")
               end
