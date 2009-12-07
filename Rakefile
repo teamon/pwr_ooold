@@ -55,6 +55,10 @@ namespace :heroku do
   
   desc "Get Heroku`s config vars"
   task :config do
-    puts `heroku config`.map{|e| e.split("=>").map {|a| a.strip}.join("=") }.join(" ")
+    `heroku config`.each{|e| 
+      cmd = "export #{e.split("=>").map {|a| a.strip}.join("=")}"
+      puts cmd
+      system(cmd)
+    }
   end
 end
